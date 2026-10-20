@@ -44,7 +44,7 @@ export const DEFAULT_SETTINGS: StudioSettings = {
     layouts: {},
   },
   folders: { enabled: true, colorFiles: true, guides: true, bold: true, pill: false, iconColor: true, colors: {}, fileColors: {} },
-  headings: { enabled: false, preset: 'damascene', colors: ['#b9a779', '#7ea69c', '#edebe0', '#b9a779', '#a67b7c', '#c8c4b8'], style: 'none', gradient: false, glow: false, scale: 1 },
+  headings: { enabled: false, preset: 'damask', colors: ['#b9a779', '#7ea69c', '#edebe0', '#b9a779', '#a67b7c', '#c8c4b8'], style: 'none', gradient: false, glow: false, scale: 1 },
   ui: { tab: 'dashboard', previews: true },
   noteStyles: [],
   insert: { suggest: true, menu: true, ribbon: true },

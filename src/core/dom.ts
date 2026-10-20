@@ -62,5 +62,5 @@ export const uid = (prefix = 'g'): string => prefix + Math.random().toString(36)
 
 /** Event handlers may be async; errors are logged instead of becoming unhandled rejections. */
 export const handler = <A extends unknown[]>(fn: (...args: A) => unknown) => (...args: A): void => {
-  void Promise.resolve(fn(...args)).catch((e) => console.error('[Damascene]', e));
+  void Promise.resolve(fn(...args)).catch((e) => console.error('[Damask]', e));
 };

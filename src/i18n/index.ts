@@ -115,7 +115,7 @@ function ensureMomentLocales(): void {
       moment.defineLocale('ar-dm', { parentLocale: 'ar', postformat: (s: string) => s, preparse: (s: string) => s });
     }
   } catch (e) {
-    console.warn('[Damascene] could not define the ar-dm moment locale', e);
+    console.warn('[Damask] could not define the ar-dm moment locale', e);
   }
   moment.locale(previous);
 }

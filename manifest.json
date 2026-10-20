@@ -1,9 +1,9 @@
 {
-  "id": "damascene-studio",
-  "name": "Damascene Studio",
-  "version": "2.0.1",
+  "id": "damask-studio",
+  "name": "Damask Studio",
+  "version": "2.0.2",
   "minAppVersion": "1.8.7",
-  "description": "Companion to the Damascene theme: a home dashboard, embed layout tools, folder colors, a block gallery, a pomodoro timer, and optional TickTick sync.",
+  "description": "Companion to the Damask theme: a home dashboard, embed layout tools, folder colors, a block gallery, a pomodoro timer, and optional TickTick sync.",
   "author": "k7aleds8",
   "authorUrl": "https://github.com/k7aleds8",
   "isDesktopOnly": false

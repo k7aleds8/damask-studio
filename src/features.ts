@@ -1,5 +1,5 @@
 import { Component, debounce, MarkdownView, Notice, TFile, TFolder, type Command } from 'obsidian';
-import type DamasceneStudio from './main';
+import type DamaskStudio from './main';
 import { t } from './i18n';
 import { TickTickClient } from './integrations/ticktick/client';
 import { TickTickMirror } from './integrations/ticktick/mirror';
@@ -18,7 +18,7 @@ import { PomodoroEngine } from './modules/pomodoro/engine';
  */
 export abstract class Feature extends Component {
   private commandIds: string[] = [];
-  constructor(protected plugin: DamasceneStudio) { super(); }
+  constructor(protected plugin: DamaskStudio) { super(); }
 
   protected command(cmd: Command): void {
     // addCommand prefixes cmd.id with the plugin id in place; removeCommand wants it bare

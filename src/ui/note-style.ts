@@ -1,6 +1,6 @@
 import { handler } from '../core/dom';
 import { Modal, Setting, setIcon, type App, type TFile } from 'obsidian';
-import type DamasceneStudio from '../main';
+import type DamaskStudio from '../main';
 import { dir, t } from '../i18n';
 import { noteStyleGroups } from '../modules/appearance/styles';
 
@@ -24,7 +24,7 @@ async function writeClasses(app: App, file: TFile, change: (cur: string[]) => st
 }
 
 /** Toggle cssclasses on a note from a list of known styles. */
-export function renderNoteStyle(c: HTMLElement, plugin: DamasceneStudio, file: TFile | null): void {
+export function renderNoteStyle(c: HTMLElement, plugin: DamaskStudio, file: TFile | null): void {
   const app = plugin.app;
   c.empty();
   const head = c.createDiv('vs-card-head');
@@ -76,7 +76,7 @@ export function renderNoteStyle(c: HTMLElement, plugin: DamasceneStudio, file: T
 }
 
 export class NoteStyleModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio, private file: TFile) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio, private file: TFile) { super(app); }
   onOpen(): void {
     this.modalEl.addClass('vs-modal');
     // same tokens and ornament as the panel, since it draws the same card

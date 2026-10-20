@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in Damascene Studio doesn't work right
+description: Something in Damask Studio doesn't work right
 body:
   - type: textarea
     id: what
@@ -19,7 +19,7 @@ body:
     id: versions
     attributes:
       label: Versions
-      placeholder: Obsidian 1.x, Damascene Studio 2.x, theme in use, OS
+      placeholder: Obsidian 1.x, Damask Studio 2.x, theme in use, OS
     validations:
       required: true
   - type: dropdown

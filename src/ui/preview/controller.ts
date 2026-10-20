@@ -2,7 +2,7 @@
 // panel after a short hover, so moving the mouse never shifts the layout; on
 // touch screens the play button opens it inline under the row instead.
 import { Platform, setIcon, type Setting } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { iconButton, uid } from '../../core/dom';
 import { dir, t, type MessageKey } from '../../i18n';
 import { Player, renderStill, valueLabel } from './engine';
@@ -38,7 +38,7 @@ export class PreviewController {
   private openTimer = 0;
   private closeTimer = 0;
 
-  constructor(private plugin: DamasceneStudio) {
+  constructor(private plugin: DamaskStudio) {
     plugin.registerDomEvent(document, 'keydown', (e) => { if (e.key === 'Escape' && this.open) this.close(); });
     // a pinned preview closes on a click anywhere else, like any popover
     plugin.registerDomEvent(document, 'pointerdown', (e) => {

@@ -1,5 +1,5 @@
 import { ItemView, MarkdownView, Notice, PluginSettingTab, Setting, setIcon, TFolder, type App, type WorkspaceLeaf } from 'obsidian';
-import type DamasceneStudio from '../main';
+import type DamaskStudio from '../main';
 import { iconButton, segmented, handler } from '../core/dom';
 import {
   baseMode, currentTheme, dailyNoteSettings, isPluginEnabled, isSnippetOn, openPluginSettings, openWithDefaultApp, pluginManifests,
@@ -16,9 +16,9 @@ import type { ModuleId } from '../settings/types';
 import { renderNoteStyle } from './note-style';
 import type { SceneId } from './preview/timeline';
 
-export const STUDIO_VIEW = 'damascene-studio';
+export const STUDIO_VIEW = 'damask-studio';
 
-interface Tab { id: string; icon: string; label: () => string; show?: (p: DamasceneStudio) => boolean; draw: (ui: StudioUI, body: HTMLElement) => void }
+interface Tab { id: string; icon: string; label: () => string; show?: (p: DamaskStudio) => boolean; draw: (ui: StudioUI, body: HTMLElement) => void }
 
 const TABS: Tab[] = [
   { id: 'dashboard', icon: 'layout-dashboard', label: () => t('studio.tabs.dashboard'), draw: (ui, b) => ui.dashboard(b) },
@@ -49,7 +49,7 @@ const MODULES: { id: ModuleId; icon: string }[] = [
 /** The control panel. The same UI renders in the side view and in Settings. */
 export class StudioUI {
   private showSubfolders = false;
-  constructor(readonly p: DamasceneStudio, private root: HTMLElement) {}
+  constructor(readonly p: DamaskStudio, private root: HTMLElement) {}
 
   get app(): App { return this.p.app; }
   get S() { return this.p.settings; }
@@ -340,7 +340,7 @@ export class StudioUI {
       }
     }
     const sync = this.card(b, t('studio.theme.syncTitle'), 'link-2');
-    if (this.S.modules.folders) new Setting(sync).setName(t('studio.theme.foldersFollow')).setDesc(t('studio.theme.foldersFollowDesc')).addButton((x) => x.setButtonText(t('studio.theme.link')).onClick(async () => { applyFolderPreset(this.app, this.S, 'damascene'); await this.commit(false); new Notice(t('common.done')); }));
+    if (this.S.modules.folders) new Setting(sync).setName(t('studio.theme.foldersFollow')).setDesc(t('studio.theme.foldersFollowDesc')).addButton((x) => x.setButtonText(t('studio.theme.link')).onClick(async () => { applyFolderPreset(this.app, this.S, 'damask'); await this.commit(false); new Notice(t('common.done')); }));
     new Setting(sync).setName(t('studio.theme.excalidrawFont')).setDesc(this.S.paths.excalidrawFont || t('studio.theme.excalidrawFontUnset')).addButton((x) => x.setButtonText(t('studio.theme.useFont')).onClick(async () => new Notice((await useExcalidrawFont(this.p)) ? t('studio.theme.fontDone') : t('studio.theme.fontMissing'))));
     if (this.S.modules.inserter) {
       const ins = this.card(b, t('studio.insert.title'), 'square-plus', t('studio.insert.desc'));
@@ -538,9 +538,9 @@ export class StudioUI {
   }
 }
 
-const HOME_TEMPLATE = '```damascene-home\n```\n';
+const HOME_TEMPLATE = '```damask-home\n```\n';
 
-export async function createHomeNote(p: DamasceneStudio): Promise<void> {
+export async function createHomeNote(p: DamaskStudio): Promise<void> {
   const path = p.paths.home;
   if (p.app.vault.getAbstractFileByPath(path)) return;
   const folder = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : '';
@@ -551,7 +551,7 @@ export async function createHomeNote(p: DamasceneStudio): Promise<void> {
 
 export class StudioView extends ItemView {
   private ui: StudioUI | null = null;
-  constructor(leaf: WorkspaceLeaf, private plugin: DamasceneStudio) { super(leaf); }
+  constructor(leaf: WorkspaceLeaf, private plugin: DamaskStudio) { super(leaf); }
   getViewType(): string { return STUDIO_VIEW; }
   getDisplayText(): string { return t('studio.title'); }
   getIcon(): string { return 'palette'; }
@@ -567,6 +567,6 @@ export class StudioView extends ItemView {
 }
 
 export class StudioSettingTab extends PluginSettingTab {
-  constructor(app: App, private plugin: DamasceneStudio) { super(app, plugin); }
+  constructor(app: App, private plugin: DamaskStudio) { super(app, plugin); }
   display(): void { new StudioUI(this.plugin, this.containerEl).render(); }
 }

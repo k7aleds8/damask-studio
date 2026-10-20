@@ -9,7 +9,7 @@ export const en = {
     done: 'Done', edit: 'Edit', loading: 'Loading…', next: 'Next', open: 'Open', save: 'Save', search: 'Search…',
   },
   commands: {
-    openStudio: 'Open Damascene Studio',
+    openStudio: 'Open Damask Studio',
     health: 'Check vault health',
     noteStyle: 'Style the current note',
     openHome: 'Open home page',
@@ -36,7 +36,7 @@ export const en = {
   },
 
   studio: {
-    title: 'Damascene Studio',
+    title: 'Damask Studio',
     subtitle: 'Your vault’s look and tools, in one place',
     openFileFirst: 'Open a file first.',
     tabs: {
@@ -81,7 +81,7 @@ export const en = {
       desc: 'Turn off what you don’t use. A module that is off leaves no commands, icons or styles behind.',
       integrationsHint: 'Connections to other apps. All of them are off until you turn them on.',
       items: {
-        home: { name: 'Home dashboard', desc: 'A live dashboard drawn by a damascene-home code block: today, tasks, focus, habits and vault activity.' },
+        home: { name: 'Home dashboard', desc: 'A live dashboard drawn by a damask-home code block: today, tasks, focus, habits and vault activity.' },
         inserter: { name: 'Block gallery', desc: 'Quotes, callouts, panels and dividers styled by the theme. Type ;; in a note, or use the right-click menu.' },
         embeds: { name: 'Embed layout', desc: 'Align, resize, frame and caption drawings and images right inside the note.' },
         folders: { name: 'Folder colors', desc: 'Color folders and their files in the file explorer, with presets that follow the theme.' },
@@ -133,7 +133,7 @@ export const en = {
       title: 'Where things live',
       desc: 'Point each feature at your own folders. Anything left empty is simply not shown.',
       home: 'Home note',
-      homeDesc: 'The note that holds the damascene-home block.',
+      homeDesc: 'The note that holds the damask-home block.',
       dailyFolder: 'Daily notes folder',
       dailyAuto: 'Leave empty to use your Daily notes settings (now: {folder}, {format}).',
       dailyFormat: 'Daily note file name',
@@ -151,16 +151,16 @@ export const en = {
     },
     home: {
       title: 'Home page',
-      desc: 'The dashboard is drawn wherever a damascene-home code block appears.',
+      desc: 'The dashboard is drawn wherever a damask-home code block appears.',
       reading: 'Always open it in reading view',
       startup: 'Open it when Obsidian starts with nothing open',
       hijri: 'Show the Hijri date',
     },
     theme: {
-      title: 'Damascene theme',
+      title: 'Damask theme',
       desc: 'Wheat gold, forest green, charcoal and deep umber, drawn from the colors of old Damascus. Pick a palette for each mode.',
-      missing: 'The Damascene theme isn’t installed. Get it from Settings → Appearance → Themes.',
-      activate: 'Use the Damascene theme',
+      missing: 'The Damask theme isn’t installed. Get it from Settings → Appearance → Themes.',
+      activate: 'Use the Damask theme',
       mode: 'Mode',
       dark: 'Dark', light: 'Light', system: 'Follow system',
       darkVariants: 'Dark palettes',
@@ -249,7 +249,7 @@ export const en = {
 
   onboarding: {
     step: 'Step {n} of {total}',
-    welcome: 'Welcome to Damascene Studio',
+    welcome: 'Welcome to Damask Studio',
     intro: 'A few choices and you’re set. Everything here can be changed later from the control panel.',
     modules: 'What would you like to use?',
     modulesDesc: 'Leave anything you don’t need switched off.',
@@ -259,13 +259,13 @@ export const en = {
     createHome: 'Create a home note',
     habits: 'Start with a few sample habits',
     habitsDesc: 'Reading, exercise, sleep, screen time and journaling. Rename or remove them anytime.',
-    later: 'You’ll find all of this under Settings → Damascene Studio.',
+    later: 'You’ll find all of this under Settings → Damask Studio.',
     finish: 'Finish',
   },
 
   appearance: {
     presets: {
-      damascene: 'Damascene', followTheme: 'Follow the theme', ember: 'Ember', rainbow: 'Rainbow', ocean: 'Ocean', emerald: 'Emerald',
+      damask: 'Damask', followTheme: 'Follow the theme', ember: 'Ember', rainbow: 'Rainbow', ocean: 'Ocean', emerald: 'Emerald',
       gold: 'Gold', sunset: 'Sunset', mono: 'Monochrome', vivid: 'Vivid', pastel: 'Pastel',
     },
     noteStyles: {
@@ -291,7 +291,7 @@ export const en = {
       insertHint: 'Pick a block to insert at the cursor. Tip: type ;; in a note for a quick picker.',
       search: 'Search: quote, poem, panel, divider…',
     },
-    menu: { insert: 'Insert a Damascene block', wrap: 'Wrap in a Damascene block', gallery: 'Open the gallery…' },
+    menu: { insert: 'Insert a Damask block', wrap: 'Wrap in a Damask block', gallery: 'Open the gallery…' },
     openNoteFirst: 'Open a note in editing view first.',
     text: {
       author: 'Author', reference: 'Surah … — ', poemTitle: 'Poem title', poet: 'Poet', wisdomTitle: 'Wisdom', term: 'Term',
@@ -359,7 +359,7 @@ export const en = {
   },
 
   home: {
-    disabled: 'The home dashboard is turned off in Damascene Studio.',
+    disabled: 'The home dashboard is turned off in Damask Studio.',
     dateFormat: 'dddd, D MMMM YYYY',
     search: 'Search the vault…  (Ctrl+O)',
     greet: { night: 'Quiet night', morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening' },
@@ -447,7 +447,7 @@ export const en = {
     growth: { title: 'Vault growth' },
     tags: { title: 'Top tags' },
     diagrams: { title: 'Drawings' },
-    footer: { studio: 'Damascene Studio', refresh: 'Refresh ↻' },
+    footer: { studio: 'Damask Studio', refresh: 'Refresh ↻' },
   },
 
   stats: {
@@ -577,9 +577,9 @@ export const en = {
     },
     oldPlugin: {
       title: 'Vault Studio is still on',
-      detail: 'Damascene Studio replaces it and has already copied its settings. Running both draws everything twice.',
+      detail: 'Damask Studio replaces it and has already copied its settings. Running both draws everything twice.',
     },
-    themeOff: { title: 'The Damascene theme is installed but not in use', detail: 'The current theme is “{theme}”.', fix: 'Use Damascene' },
+    themeOff: { title: 'The Damask theme is installed but not in use', detail: 'The current theme is “{theme}”.', fix: 'Use Damask' },
     styleSettings: { title: 'Style Settings isn’t installed', detail: 'Install the Style Settings plugin to reach the theme’s options: palettes, fonts, line height and more.' },
     excalidrawBg: { title: 'Excalidraw drawings show a white background', detail: 'Matching the Obsidian theme and exporting without a background makes drawings transparent and readable in dark mode.' },
     excalidrawFont: { title: 'Excalidraw’s font file is missing', detail: '“{path}” no longer exists, so text in drawings falls back to another font.', fix: 'Use the font from Vault setup' },

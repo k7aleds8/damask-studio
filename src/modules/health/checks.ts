@@ -1,5 +1,5 @@
 import { TFile, TFolder } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { communityPlugin, currentTheme, isPluginEnabled, pluginManifests, setPluginEnabled, setTheme, themeInstalled } from '../../core/internals';
 import { t } from '../../i18n';
 import { THEME_NAME } from '../appearance/styles';
@@ -21,7 +21,7 @@ type ExcalidrawSettings = { previewMatchObsidianTheme?: boolean; exportWithBackg
  * offers a button, because quietly editing other plugins' settings is not
  * something a plugin should do.
  */
-export function healthChecks(plugin: DamasceneStudio): Check[] {
+export function healthChecks(plugin: DamaskStudio): Check[] {
   const app = plugin.app;
   const checks: Check[] = [];
   const add = (c: Check) => checks.push(c);
@@ -99,7 +99,7 @@ export function healthChecks(plugin: DamasceneStudio): Check[] {
   return checks;
 }
 
-export async function fixExcalidrawBackground(plugin: DamasceneStudio): Promise<void> {
+export async function fixExcalidrawBackground(plugin: DamaskStudio): Promise<void> {
   const ex = communityPlugin(plugin.app, 'obsidian-excalidraw-plugin') as { settings?: ExcalidrawSettings & { width?: string }; saveSettings?: () => Promise<void> } | null;
   if (!ex?.settings) return;
   ex.settings.previewMatchObsidianTheme = true;
@@ -108,7 +108,7 @@ export async function fixExcalidrawBackground(plugin: DamasceneStudio): Promise<
 }
 
 /** Point Excalidraw's fourth font slot at the font file chosen in Vault setup. */
-export async function useExcalidrawFont(plugin: DamasceneStudio): Promise<boolean> {
+export async function useExcalidrawFont(plugin: DamaskStudio): Promise<boolean> {
   const ex = communityPlugin(plugin.app, 'obsidian-excalidraw-plugin') as { settings?: ExcalidrawSettings; saveSettings?: () => Promise<void> } | null;
   const path = plugin.settings.paths.excalidrawFont;
   if (!ex?.settings || !path || !(plugin.app.vault.getAbstractFileByPath(path) instanceof TFile)) return false;
@@ -119,7 +119,7 @@ export async function useExcalidrawFont(plugin: DamasceneStudio): Promise<boolea
   return true;
 }
 
-async function fixTemplater(plugin: DamasceneStudio): Promise<void> {
+async function fixTemplater(plugin: DamaskStudio): Promise<void> {
   const tp = communityPlugin(plugin.app, 'templater-obsidian') as { settings?: { trigger_on_file_creation?: boolean }; save_settings?: () => Promise<void>; saveSettings?: () => Promise<void>; event_handler?: { update_trigger_file_on_creation?: () => void } } | null;
   if (!tp?.settings) return;
   tp.settings.trigger_on_file_creation = true;
@@ -127,7 +127,7 @@ async function fixTemplater(plugin: DamasceneStudio): Promise<void> {
   try { tp.event_handler?.update_trigger_file_on_creation?.(); } catch { /* older Templater */ }
 }
 
-export function vaultStats(plugin: DamasceneStudio) {
+export function vaultStats(plugin: DamaskStudio) {
   const app = plugin.app;
   const md = app.vault.getMarkdownFiles();
   let links = 0;

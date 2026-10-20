@@ -1,6 +1,6 @@
 import { handler } from '../core/dom';
 import { Modal, Setting, type App } from 'obsidian';
-import type DamasceneStudio from '../main';
+import type DamaskStudio from '../main';
 import { dir, LANGUAGES, setLanguage, t } from '../i18n';
 import { STARTER_HABITS } from '../settings/defaults';
 import type { ModuleId } from '../settings/types';
@@ -13,7 +13,7 @@ export class OnboardingModal extends Modal {
   private makeHome = true;
   private addHabits = true;
 
-  constructor(app: App, private plugin: DamasceneStudio) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio) { super(app); }
 
   onOpen(): void {
     this.modalEl.addClass('vs-modal', 'dm-onboarding');

@@ -1,11 +1,11 @@
 import { Component, EditorSuggest, MarkdownRenderer, Modal, setIcon, type App, type Command, type Editor, type EditorPosition, type EditorSuggestContext, type EditorSuggestTriggerInfo, type Menu } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { dir, t } from '../../i18n';
 import { BLOCKS, blockName, blockSample, buildBlock, groupName, insertBlock, searchText, type Block, type BlockGroup } from './blocks';
 
 /** Typing ;; (or the Arabic ؛؛) opens the block picker inline. */
 export class BlockSuggest extends EditorSuggest<Block> {
-  constructor(app: App, private plugin: DamasceneStudio) {
+  constructor(app: App, private plugin: DamaskStudio) {
     super(app);
     this.limit = 40;
   }
@@ -43,7 +43,7 @@ export class BlockSuggest extends EditorSuggest<Block> {
 export class GalleryModal extends Modal {
   private previews = new Component();
 
-  constructor(app: App, _plugin: DamasceneStudio, private editor: Editor | null) { super(app); }
+  constructor(app: App, _plugin: DamaskStudio, private editor: Editor | null) { super(app); }
 
   onOpen(): void {
     this.modalEl.addClass('vs-modal', 'vs-gallery-modal');
@@ -98,7 +98,7 @@ export class GalleryModal extends Modal {
   }
 }
 
-export function inserterCommands(plugin: DamasceneStudio): Command[] {
+export function inserterCommands(plugin: DamaskStudio): Command[] {
   return [
     { id: 'block-gallery', name: t('commands.gallery'), icon: 'square-plus', editorCallback: (ed) => new GalleryModal(plugin.app, plugin, ed).open() },
     ...BLOCKS.map((b) => ({ id: 'insert-' + b.id, name: t('commands.insert', { name: blockName(b) }), icon: b.icon, editorCallback: (ed: Editor) => insertBlock(ed, b) })),
@@ -106,7 +106,7 @@ export function inserterCommands(plugin: DamasceneStudio): Command[] {
 }
 
 /** The suggester and the editor menu cannot be unregistered, so they check the module switch themselves. */
-export function registerInserterHooks(plugin: DamasceneStudio): void {
+export function registerInserterHooks(plugin: DamaskStudio): void {
   plugin.registerEditorSuggest(new BlockSuggest(plugin.app, plugin));
   plugin.registerEvent(plugin.app.workspace.on('editor-menu', (menu, editor) => {
     if (!plugin.settings.modules.inserter || !plugin.settings.insert.menu) return;

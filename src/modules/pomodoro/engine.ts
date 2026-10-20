@@ -1,6 +1,6 @@
 import { handler } from '../../core/dom';
 import { moment, Notice } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';
 import { m, t } from '../../i18n';
 import { ttTime } from '../../integrations/ticktick/client';
@@ -30,7 +30,7 @@ export class PomodoroEngine {
   private listeners = new Set<(tickOnly: boolean) => void>();
   private bar: HTMLElement;
 
-  constructor(private plugin: DamasceneStudio) {
+  constructor(private plugin: DamaskStudio) {
     this.st = { mode: 'pomo', running: false, startedAt: 0, endsAt: 0, pausedAt: 0, pause: 0, task: '', taskId: '', done: 0, day: '', ...(readLocal<PomoState>(plugin.app, KEY) ?? {}) };
     this.bar = plugin.addStatusBarItem();
     this.bar.addClass('tt-pomo-bar', 'mod-clickable');

@@ -9,7 +9,7 @@ export const es: Messages = {
     done: 'Listo', edit: 'Editar', loading: 'Cargando…', next: 'Siguiente', open: 'Abrir', save: 'Guardar', search: 'Buscar…',
   },
   commands: {
-    openStudio: 'Abrir Damascene Studio',
+    openStudio: 'Abrir Damask Studio',
     health: 'Revisar el estado de la bóveda',
     noteStyle: 'Dar estilo a la nota actual',
     openHome: 'Abrir la página de inicio',
@@ -36,7 +36,7 @@ export const es: Messages = {
   },
 
   studio: {
-    title: 'Damascene Studio',
+    title: 'Damask Studio',
     subtitle: 'El aspecto y las herramientas de tu bóveda, en un solo lugar',
     openFileFirst: 'Abre primero un archivo.',
     tabs: {
@@ -81,7 +81,7 @@ export const es: Messages = {
       desc: 'Desactiva lo que no uses. Un módulo desactivado no deja comandos, iconos ni estilos.',
       integrationsHint: 'Conexiones con otras aplicaciones. Todas siguen desactivadas hasta que las actives.',
       items: {
-        home: { name: 'Panel de inicio', desc: 'Un panel vivo que dibuja un bloque damascene-home: el día, las tareas, el enfoque, los hábitos y la actividad de la bóveda.' },
+        home: { name: 'Panel de inicio', desc: 'Un panel vivo que dibuja un bloque damask-home: el día, las tareas, el enfoque, los hábitos y la actividad de la bóveda.' },
         inserter: { name: 'Galería de bloques', desc: 'Citas, recuadros, paneles y separadores con el diseño del tema. Escribe ;; en una nota o usa el clic derecho.' },
         embeds: { name: 'Diseño de incrustaciones', desc: 'Alinea, redimensiona, enmarca y pon pie a dibujos e imágenes desde la propia nota.' },
         folders: { name: 'Colores de carpetas', desc: 'Colorea las carpetas y sus archivos en el explorador, con paletas que siguen al tema.' },
@@ -133,7 +133,7 @@ export const es: Messages = {
       title: 'Dónde está cada cosa',
       desc: 'Indica a cada función tus propias carpetas. Lo que dejes vacío, simplemente no se muestra.',
       home: 'Nota de inicio',
-      homeDesc: 'La nota que contiene el bloque damascene-home.',
+      homeDesc: 'La nota que contiene el bloque damask-home.',
       dailyFolder: 'Carpeta de notas diarias',
       dailyAuto: 'Déjalo vacío para usar tus ajustes de notas diarias (ahora: {folder}, {format}).',
       dailyFormat: 'Nombre de archivo de la nota del día',
@@ -151,16 +151,16 @@ export const es: Messages = {
     },
     home: {
       title: 'Página de inicio',
-      desc: 'El panel aparece allí donde haya un bloque damascene-home.',
+      desc: 'El panel aparece allí donde haya un bloque damask-home.',
       reading: 'Abrirla siempre en modo lectura',
       startup: 'Abrirla al iniciar Obsidian si no hay nada abierto',
       hijri: 'Mostrar la fecha de la Hégira',
     },
     theme: {
-      title: 'Tema Damascene',
+      title: 'Tema Damask',
       desc: 'Oro de trigo, verde bosque, carbón y sombra tostada, inspirados en los colores del viejo Damasco. Elige una paleta para cada modo.',
-      missing: 'El tema Damascene no está instalado. Consíguelo en Ajustes → Apariencia → Temas.',
-      activate: 'Usar el tema Damascene',
+      missing: 'El tema Damask no está instalado. Consíguelo en Ajustes → Apariencia → Temas.',
+      activate: 'Usar el tema Damask',
       mode: 'Modo',
       dark: 'Oscuro', light: 'Claro', system: 'Según el sistema',
       darkVariants: 'Paletas oscuras',
@@ -249,7 +249,7 @@ export const es: Messages = {
 
   onboarding: {
     step: 'Paso {n} de {total}',
-    welcome: 'Te damos la bienvenida a Damascene Studio',
+    welcome: 'Te damos la bienvenida a Damask Studio',
     intro: 'Un par de decisiones y listo. Todo se puede cambiar después desde el panel de control.',
     modules: '¿Qué te gustaría usar?',
     modulesDesc: 'Deja desactivado lo que no necesites.',
@@ -259,13 +259,13 @@ export const es: Messages = {
     createHome: 'Crear una nota de inicio',
     habits: 'Empezar con algunos hábitos de ejemplo',
     habitsDesc: 'Lectura, ejercicio, sueño, tiempo de pantalla y diario. Cámbiales el nombre o quítalos cuando quieras.',
-    later: 'Encontrarás todo esto en Ajustes → Damascene Studio.',
+    later: 'Encontrarás todo esto en Ajustes → Damask Studio.',
     finish: 'Terminar',
   },
 
   appearance: {
     presets: {
-      damascene: 'Damascene', followTheme: 'Seguir al tema', ember: 'Brasa', rainbow: 'Arcoíris', ocean: 'Océano', emerald: 'Esmeralda',
+      damask: 'Damask', followTheme: 'Seguir al tema', ember: 'Brasa', rainbow: 'Arcoíris', ocean: 'Océano', emerald: 'Esmeralda',
       gold: 'Oro', sunset: 'Atardecer', mono: 'Monocromo', vivid: 'Vivo', pastel: 'Pastel',
     },
     noteStyles: {
@@ -291,7 +291,7 @@ export const es: Messages = {
       insertHint: 'Elige un bloque para insertarlo en el cursor. Truco: escribe ;; en una nota para elegir rápido.',
       search: 'Buscar: cita, poema, panel, separador…',
     },
-    menu: { insert: 'Insertar un bloque Damascene', wrap: 'Envolver en un bloque Damascene', gallery: 'Abrir la galería…' },
+    menu: { insert: 'Insertar un bloque Damask', wrap: 'Envolver en un bloque Damask', gallery: 'Abrir la galería…' },
     openNoteFirst: 'Abre primero una nota en modo edición.',
     text: {
       author: 'Autor', reference: 'Sura … — ', poemTitle: 'Título del poema', poet: 'Poeta', wisdomTitle: 'Sabiduría', term: 'Término',
@@ -359,7 +359,7 @@ export const es: Messages = {
   },
 
   home: {
-    disabled: 'El panel de inicio está desactivado en Damascene Studio.',
+    disabled: 'El panel de inicio está desactivado en Damask Studio.',
     dateFormat: 'dddd, D [de] MMMM [de] YYYY',
     search: 'Buscar en la bóveda…  (Ctrl+O)',
     greet: { night: 'Noche tranquila', morning: 'Buenos días', afternoon: 'Buenas tardes', evening: 'Buenas noches' },
@@ -447,7 +447,7 @@ export const es: Messages = {
     growth: { title: 'Crecimiento de la bóveda' },
     tags: { title: 'Etiquetas más usadas' },
     diagrams: { title: 'Dibujos' },
-    footer: { studio: 'Damascene Studio', refresh: 'Actualizar ↻' },
+    footer: { studio: 'Damask Studio', refresh: 'Actualizar ↻' },
   },
 
   stats: {
@@ -577,9 +577,9 @@ export const es: Messages = {
     },
     oldPlugin: {
       title: 'Vault Studio sigue activado',
-      detail: 'Damascene Studio lo sustituye y ya copió sus ajustes. Con los dos activos, todo se dibuja dos veces.',
+      detail: 'Damask Studio lo sustituye y ya copió sus ajustes. Con los dos activos, todo se dibuja dos veces.',
     },
-    themeOff: { title: 'El tema Damascene está instalado pero no en uso', detail: 'El tema actual es «{theme}».', fix: 'Usar Damascene' },
+    themeOff: { title: 'El tema Damask está instalado pero no en uso', detail: 'El tema actual es «{theme}».', fix: 'Usar Damask' },
     styleSettings: { title: 'Style Settings no está instalado', detail: 'Instala el plugin Style Settings para llegar a las opciones del tema: paletas, fuentes, interlineado y más.' },
     excalidrawBg: { title: 'Los dibujos de Excalidraw tienen fondo blanco', detail: 'Seguir el tema de Obsidian y exportar sin fondo deja los dibujos transparentes y legibles en modo oscuro.' },
     excalidrawFont: { title: 'Falta el archivo de fuente de Excalidraw', detail: '«{path}» ya no existe, así que el texto de los dibujos usa otra fuente.', fix: 'Usar la fuente de la pestaña Bóveda' },

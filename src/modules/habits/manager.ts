@@ -1,12 +1,12 @@
 import { handler } from '../../core/dom';
 import { Modal, Notice, Setting, type App } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { dir, formatNumber, t } from '../../i18n';
 import type { Habit } from '../../settings/types';
 
 /** Add, edit and remove the habits tracked in daily-note properties. */
 export class HabitsManagerModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio) { super(app); }
 
   onOpen(): void { this.draw(); }
   onClose(): void { this.contentEl.empty(); }

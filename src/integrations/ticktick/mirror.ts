@@ -1,5 +1,5 @@
 import { moment, normalizePath, Notice, TFile, type TAbstractFile } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';
 import { squash } from '../../core/task-line';
 import { m, plain, t } from '../../i18n';
@@ -57,7 +57,7 @@ export class TickTickMirror {
   private changed = false;
   private asking = false;
 
-  constructor(private plugin: DamasceneStudio, private tt: TickTickClient) {
+  constructor(private plugin: DamaskStudio, private tt: TickTickClient) {
     this.st = { tasks: {}, projects: {}, habits: {}, ci: {}, pending: [], revive: {}, trash: [], ...(readLocal<State>(plugin.app, KEY) ?? {}) };
   }
 
@@ -98,7 +98,7 @@ export class TickTickMirror {
       this.lastRun = Date.now();
       this.status = '';
     } catch (e) {
-      console.error('[Damascene] TickTick mirror', e);
+      console.error('[Damask] TickTick mirror', e);
       this.status = (e as Error).message;
     }
     this.running = false;
@@ -346,7 +346,7 @@ export class TickTickMirror {
           op(target).add.push({ lines: render(r.id, nr), done: nr.s === 2 });
         }
         B[r.id] = { rec: nr, pid: r.projectId };
-      } catch (e) { console.error('[Damascene] mirror create', e); }
+      } catch (e) { console.error('[Damask] mirror create', e); }
     }
 
     if (dels.length > MAX_SILENT_DELETES) {

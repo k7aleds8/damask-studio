@@ -17,6 +17,6 @@ export function writeLocal(app: App, key: string, value: unknown): void {
   try {
     app.saveLocalStorage(key, value == null ? null : JSON.stringify(value));
   } catch (e) {
-    console.error(`[Damascene] could not store ${key}`, e);
+    console.error(`[Damask] could not store ${key}`, e);
   }
 }

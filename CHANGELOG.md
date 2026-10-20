@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2
+
+- New name: **Damask Studio** (plugin id `damask-studio`), following the theme, now called
+  Damask. On first run it imports the settings, habits, layouts and focus history saved by
+  Damascene Studio. `damascene-home` blocks still render.
+- The default heading preset is now called *Damask*; saved settings are converted.
+
 ## 2.0.1
 
 - Switching the plugin off, or only its palette module, now takes the palette

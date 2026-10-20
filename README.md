@@ -1,17 +1,17 @@
 <div align="center">
 
-<img src="docs/screenshots/home.png" alt="The Damascene Studio home dashboard: greeting, clock, quote of the day, vault numbers, today's habits, open tasks and the focus timer" width="100%">
+<img src="docs/screenshots/home.png" alt="The Damask Studio home dashboard: greeting, clock, quote of the day, vault numbers, today's habits, open tasks and the focus timer" width="100%">
 
 <br>
 
-### Damascene Studio
+### Damask Studio
 
-The companion plugin for the [Damascene](https://github.com/k7aleds8/damascene) theme:<br>
+The companion plugin for the [Damask](https://github.com/k7aleds8/damask) theme:<br>
 a home dashboard, a block gallery, embed layouts, folder colours, a focus timer and habits — all from one control panel.
 
 <br>
 
-[![Version](https://img.shields.io/badge/version-2.0.1-b9a779?style=flat-square&labelColor=002623)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.2-b9a779?style=flat-square&labelColor=002623)](CHANGELOG.md)
 [![Obsidian](https://img.shields.io/badge/Obsidian-1.8.7%2B-7ea69c?style=flat-square&labelColor=002623&logo=obsidian&logoColor=edebe0)](https://obsidian.md)
 [![Languages](https://img.shields.io/badge/EN%20·%20AR%20·%20FR%20·%20ES%20·%20TR-a67b7c?style=flat-square&labelColor=002623&label=languages)](#languages)
 [![License](https://img.shields.io/badge/license-MIT-edebe0?style=flat-square&labelColor=002623)](LICENSE)
@@ -22,7 +22,9 @@ a home dashboard, a block gallery, embed layouts, folder colours, a focus timer 
 
 <br>
 
-Damascene Studio is designed around the [Damascene theme](https://github.com/k7aleds8/damascene), but it does not require it: every module works with any theme. Each part has its own switch, and anything you turn off is unloaded completely — its commands, its ribbon icon and its styles.
+Damask Studio is designed around the [Damask theme](https://github.com/k7aleds8/damask), but it does not require it: every module works with any theme. Each part has its own switch, and anything you turn off is unloaded completely — its commands, its ribbon icon and its styles.
+
+**Why "Damask"?** Damask is the English word for the patterned silk first woven in Damascus, and the name of the city's rose. Like the fabric, whose pattern only shows when light falls across it, the theme and this plugin keep their ornament quiet until you look for it. The [theme's README](https://github.com/k7aleds8/damask#why-damask) tells the whole story, colours included.
 
 <img src="docs/screenshots/devices.png" alt="The home dashboard on a laptop, a tablet and a phone" width="100%">
 
@@ -31,7 +33,7 @@ Damascene Studio is designed around the [Damascene theme](https://github.com/k7a
 Put this block in any note and it becomes a live dashboard:
 
 ````markdown
-```damascene-home
+```damask-home
 ```
 ````
 
@@ -43,7 +45,7 @@ Cards only appear when there is something behind them. No quotes folder, no quot
 
 <img src="docs/screenshots/studio.png" alt="The control panel in the sidebar, with an animated preview showing what an option changes" width="100%">
 
-Open it from the palette icon in the ribbon or from **Settings → Damascene Studio**. Every module has a switch, and every option that changes how your notes look has a **live preview**: point at it (or tap ▶ on a phone) and a short silent animation plays on a miniature of your vault — in your theme's colours and your language — showing the page as it is now and as it will be after the change. If you prefer reduced motion, you see the two states side by side instead.
+Open it from the palette icon in the ribbon or from **Settings → Damask Studio**. Every module has a switch, and every option that changes how your notes look has a **live preview**: point at it (or tap ▶ on a phone) and a short silent animation plays on a miniature of your vault — in your theme's colours and your language — showing the page as it is now and as it will be after the change. If you prefer reduced motion, you see the two states side by side instead.
 
 Every folder the plugin reads is configurable, and it follows your Daily notes or Periodic Notes settings by default. On first run a short setup asks for your language and which parts you want.
 
@@ -56,7 +58,7 @@ Every folder the plugin reads is configurable, and it follows your Daily notes o
 | **Embed layout** | Point at an image or Excalidraw drawing: align it, drag its edges to resize, float text around it, add a frame or a caption. Layouts can apply to one note or everywhere the file is embedded. |
 | **Folder colours** | Colour folders and their files, with presets that follow the active palette. |
 | **Heading colours** | Your own heading colours and styles on top of any theme. |
-| **Theme palettes** | With Damascene installed, pick each mode's palette with live previews. |
+| **Theme palettes** | With Damask installed, pick each mode's palette with live previews. |
 | **Focus timer** | Pomodoro and stopwatch in the status bar, with daily goals and a chime. |
 | **Habits** | Numbers and yes/no habits kept in your daily notes' properties, logged from the dashboard. |
 | **Health check** | Broken links, empty notes, drawings embedded nowhere, notes left in the vault root, and plugin settings that clash with your theme. It suggests fixes and never changes anything on its own. |
@@ -89,11 +91,11 @@ Connect with a personal API token from TickTick's settings. The token stays on y
 
 ## Install
 
-**From Obsidian** — *Settings → Community plugins → Browse*, search for **Damascene Studio**, then *Install* and *Enable*. For the full look, install the **Damascene** theme from *Settings → Appearance → Themes*.
+**From Obsidian** — *Settings → Community plugins → Browse*, search for **Damask Studio**, then *Install* and *Enable*. For the full look, install the **Damask** theme from *Settings → Appearance → Themes*.
 
-**By hand** — download `main.js`, `manifest.json` and `styles.css` from the [latest release](https://github.com/k7aleds8/damascene-studio/releases) into `.obsidian/plugins/damascene-studio/`.
+**By hand** — download `main.js`, `manifest.json` and `styles.css` from the [latest release](https://github.com/k7aleds8/damask-studio/releases) into `.obsidian/plugins/damask-studio/`.
 
-**Beta builds** — add `k7aleds8/damascene-studio` in [BRAT](https://github.com/TfTHacker/obsidian42-brat).
+**Beta builds** — add `k7aleds8/damask-studio` in [BRAT](https://github.com/TfTHacker/obsidian42-brat).
 
 ## Languages
 
@@ -111,14 +113,17 @@ Want another language? See [CONTRIBUTING.md](CONTRIBUTING.md#translations).
 
 ## FAQ
 
-**Do I need the Damascene theme?**
-No. The plugin works with any theme; with Damascene it also offers the palette picker and borrows the theme's ornaments.
+**Do I need the Damask theme?**
+No. The plugin works with any theme; with Damask it also offers the palette picker and borrows the theme's ornaments.
 
 **Does it need TickTick?**
 No. TickTick stays off until you turn it on, and the dashboard works fully from your notes.
 
+**I installed it when it was called Damascene Studio.**
+Install Damask Studio from the plugin browser and enable it: it reads the old plugin's settings, habits, layouts and focus history on first run. Old `damascene-home` blocks keep working. Then turn Damascene Studio off and remove it.
+
 **I used Vault Studio.**
-Enable Damascene Studio and it copies your settings, habits, layouts and TickTick connection. Then turn Vault Studio off. The health check offers to rename the old `qm-` classes in your notes.
+Enable Damask Studio and it copies your settings, habits, layouts and TickTick connection. Then turn Vault Studio off. The health check offers to rename the old `qm-` classes in your notes.
 
 **Where is my data?**
 Settings live in the plugin's `data.json`. Your TickTick token and sync state stay in this device's local storage and never sync with the vault.

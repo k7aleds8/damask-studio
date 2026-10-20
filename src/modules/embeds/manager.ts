@@ -1,5 +1,5 @@
 import { debounce, getLinkpath, MarkdownView, Notice, type App } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { iconButton, handler } from '../../core/dom';
 import { t } from '../../i18n';
 import { EMBED_DEFAULT } from '../../settings/defaults';
@@ -29,7 +29,7 @@ export class EmbedManager {
   private onMove = (e: MouseEvent) => this.handleMove(e);
   private onScroll = () => { if (this.hovered && !this.dragging) this.position(); };
 
-  constructor(private plugin: DamasceneStudio) {}
+  constructor(private plugin: DamaskStudio) {}
 
   private get app(): App { return this.plugin.app; }
   get S() { return this.plugin.settings.embeds; }

@@ -16,10 +16,12 @@ export function deepMerge<T>(base: T, extra: unknown): T {
   return out as T;
 }
 
-// the old theme exposed its palette as --qm-*; Damascene renamed them to --dm-*
+// the old theme exposed its palette as --qm-*; Damask renamed them to --dm-*
 const renameVars = (s: string): string => s.replace(/--qm-/g, '--dm-');
 
 const OLD_PLUGIN_DIR = 'plugins/vault-studio/data.json';
+// this plugin was published as damascene-studio before it became Damask Studio
+const PREVIOUS_PLUGIN_DIR = 'plugins/damascene-studio/data.json';
 const OLD_LOCAL_KEYS: [string, string][] = [
   ['vs-tt-token', 'dm-tt-token'],
   ['vs-tt-cache', 'dm-tt-cache'],
@@ -29,7 +31,7 @@ const OLD_LOCAL_KEYS: [string, string][] = [
 
 /**
  * Settings written by the old "Vault Studio" plugin (version 1). Only ever
- * read once, on the first load of Damascene Studio in that vault.
+ * read once, on the first load of Damask Studio in that vault.
  */
 export async function readLegacy(app: App): Promise<Json | null> {
   const path = `${app.vault.configDir}/${OLD_PLUGIN_DIR}`;
@@ -60,7 +62,7 @@ export function fromLegacy(app: App, old: Json): StudioSettings {
   }
   if (o.headings) {
     s.headings = deepMerge(s.headings, o.headings);
-    if (s.headings.preset === 'qomra') s.headings.preset = 'damascene';
+    if (s.headings.preset === 'qomra') s.headings.preset = 'damask';
   }
   if (o.insert) s.insert = deepMerge(s.insert, o.insert);
   if (o.home) s.home = deepMerge(s.home, o.home);
@@ -106,5 +108,18 @@ export function fromLegacy(app: App, old: Json): StudioSettings {
 }
 
 export function upgrade(saved: Json): StudioSettings {
-  return deepMerge(DEFAULT_SETTINGS, saved);
+  const s = deepMerge(DEFAULT_SETTINGS, saved);
+  if (s.headings.preset === 'damascene') s.headings.preset = 'damask';
+  return s;
+}
+
+/** Settings saved under the plugin's previous id; same shape, so upgrade() is enough. */
+export async function readPreviousName(app: App): Promise<Json | null> {
+  const path = `${app.vault.configDir}/${PREVIOUS_PLUGIN_DIR}`;
+  try {
+    if (!(await app.vault.adapter.exists(path))) return null;
+    return JSON.parse(await app.vault.adapter.read(path)) as Json;
+  } catch {
+    return null;
+  }
 }

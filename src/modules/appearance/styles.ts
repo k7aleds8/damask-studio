@@ -7,7 +7,7 @@ import type { StudioSettings } from '../../settings/types';
 export interface Preset { name: () => string; colors: string[]; swatch?: string[] }
 
 export const HEADING_PRESETS: Record<string, Preset> = {
-  damascene: { name: () => t('appearance.presets.damascene'), colors: ['#b9a779', '#7ea69c', '#edebe0', '#b9a779', '#a67b7c', '#c8c4b8'] },
+  damask: { name: () => t('appearance.presets.damask'), colors: ['#b9a779', '#7ea69c', '#edebe0', '#b9a779', '#a67b7c', '#c8c4b8'] },
   ember: { name: () => t('appearance.presets.ember'), colors: ['#ff3b3b', '#ff6a4d', '#ff9466', '#ffb38a', '#ffd0b0', '#e6e6e6'] },
   rainbow: { name: () => t('appearance.presets.rainbow'), colors: ['#ff5c7a', '#ffa94d', '#ffd43b', '#69db7c', '#4dabf7', '#b197fc'] },
   ocean: { name: () => t('appearance.presets.ocean'), colors: ['#4dd4ff', '#3fb8ff', '#5c9dff', '#7f8cff', '#9d7cff', '#c3b5ff'] },
@@ -18,7 +18,7 @@ export const HEADING_PRESETS: Record<string, Preset> = {
 };
 
 export const FOLDER_PRESETS: Record<string, Preset> = {
-  damascene: {
+  damask: {
     name: () => t('appearance.presets.followTheme'),
     colors: Array.from({ length: 9 }, (_, i) => `var(--dm-folder-${i + 1})`),
     swatch: ['#b9a779', '#7ea69c', '#a67b7c', '#edebe0', '#988561', '#428177', '#6b1f2a'],
@@ -106,7 +106,7 @@ export const VARIANTS: Variant[] = [
   { id: 'daylight', mode: 'light', bg: '#f6f9f8', bg2: '#e6efed', text: '#002623', accent: '#054239', accent2: '#6b1f2a', accent3: '#6e6149', h1: '#054239', h2: '#4a151e' },
 ];
 
-export const THEME_NAME = 'Damascene';
+export const THEME_NAME = 'Damask';
 
 interface StyleSettingsManager { getSetting(section: string, id: string): unknown; setSetting(section: string, id: string, value: unknown): void }
 
@@ -120,7 +120,7 @@ function syncStyleSettings(app: App, S: StudioSettings): void {
   const m = ss?.settingsManager;
   if (!m) return;
   for (const [id, value] of [['dm-dark-palette', `dm-dark-${S.theme.dark}`], ['dm-light-palette', `dm-light-${S.theme.light}`]]) {
-    if (m.getSetting('damascene-theme', id) !== value) m.setSetting('damascene-theme', id, value);
+    if (m.getSetting('damask-theme', id) !== value) m.setSetting('damask-theme', id, value);
   }
 }
 

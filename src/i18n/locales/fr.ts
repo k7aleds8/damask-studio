@@ -10,7 +10,7 @@ export const fr: Messages = {
     done: 'C’est fait', edit: 'Modifier', loading: 'Chargement…', next: 'Suivant', open: 'Ouvrir', save: 'Enregistrer', search: 'Rechercher…',
   },
   commands: {
-    openStudio: 'Ouvrir Damascene Studio',
+    openStudio: 'Ouvrir Damask Studio',
     health: 'Vérifier l’état du coffre',
     noteStyle: 'Styler la note ouverte',
     openHome: 'Ouvrir la page d’accueil',
@@ -37,7 +37,7 @@ export const fr: Messages = {
   },
 
   studio: {
-    title: 'Damascene Studio',
+    title: 'Damask Studio',
     subtitle: 'L’apparence et les outils de votre coffre, au même endroit',
     openFileFirst: 'Ouvrez d’abord un fichier.',
     tabs: {
@@ -82,7 +82,7 @@ export const fr: Messages = {
       desc: 'Désactivez ce dont vous ne vous servez pas. Un module désactivé ne laisse ni commande, ni icône, ni style derrière lui.',
       integrationsHint: 'Les connexions à d’autres applications. Elles restent désactivées tant que vous ne les activez pas.',
       items: {
-        home: { name: 'Tableau de bord', desc: 'Un tableau de bord vivant, affiché par un bloc damascene-home : la journée, les tâches, la concentration, les habitudes et l’activité du coffre.' },
+        home: { name: 'Tableau de bord', desc: 'Un tableau de bord vivant, affiché par un bloc damask-home : la journée, les tâches, la concentration, les habitudes et l’activité du coffre.' },
         inserter: { name: 'Galerie de blocs', desc: 'Citations, encadrés, panneaux et séparateurs dessinés par le thème. Tapez ;; dans une note ou passez par le clic droit.' },
         embeds: { name: 'Mise en page des intégrations', desc: 'Alignez, redimensionnez, encadrez et légendez dessins et images directement dans la note.' },
         folders: { name: 'Couleurs des dossiers', desc: 'Colorez les dossiers et leurs fichiers dans l’explorateur, avec des palettes qui suivent le thème.' },
@@ -134,7 +134,7 @@ export const fr: Messages = {
       title: 'Où se trouvent les choses',
       desc: 'Indiquez à chaque fonction vos propres dossiers. Ce que vous laissez vide n’est tout simplement pas affiché.',
       home: 'Note d’accueil',
-      homeDesc: 'La note qui contient le bloc damascene-home.',
+      homeDesc: 'La note qui contient le bloc damask-home.',
       dailyFolder: 'Dossier des notes quotidiennes',
       dailyAuto: 'Laissez vide pour reprendre vos réglages de notes quotidiennes (actuellement : {folder}, {format}).',
       dailyFormat: 'Nom de fichier de la note du jour',
@@ -152,16 +152,16 @@ export const fr: Messages = {
     },
     home: {
       title: 'Page d’accueil',
-      desc: 'Le tableau de bord s’affiche partout où se trouve un bloc damascene-home.',
+      desc: 'Le tableau de bord s’affiche partout où se trouve un bloc damask-home.',
       reading: 'Toujours l’ouvrir en mode lecture',
       startup: 'L’ouvrir au démarrage quand aucune note n’est ouverte',
       hijri: 'Afficher la date de l’Hégire',
     },
     theme: {
-      title: 'Thème Damascene',
+      title: 'Thème Damask',
       desc: 'Or des blés, vert forêt, charbon et terre d’ombre, inspirés des couleurs du vieux Damas. Choisissez une palette pour chaque mode.',
-      missing: 'Le thème Damascene n’est pas installé. Ajoutez-le depuis Réglages → Apparence → Thèmes.',
-      activate: 'Utiliser le thème Damascene',
+      missing: 'Le thème Damask n’est pas installé. Ajoutez-le depuis Réglages → Apparence → Thèmes.',
+      activate: 'Utiliser le thème Damask',
       mode: 'Mode',
       dark: 'Sombre', light: 'Clair', system: 'Selon le système',
       darkVariants: 'Palettes sombres',
@@ -250,7 +250,7 @@ export const fr: Messages = {
 
   onboarding: {
     step: 'Étape {n} sur {total}',
-    welcome: 'Bienvenue dans Damascene Studio',
+    welcome: 'Bienvenue dans Damask Studio',
     intro: 'Quelques choix et c’est prêt. Tout reste modifiable plus tard depuis le panneau de contrôle.',
     modules: 'Que souhaitez-vous utiliser ?',
     modulesDesc: 'Laissez désactivé ce dont vous n’avez pas besoin.',
@@ -260,13 +260,13 @@ export const fr: Messages = {
     createHome: 'Créer une note d’accueil',
     habits: 'Commencer avec quelques habitudes d’exemple',
     habitsDesc: 'Lecture, sport, sommeil, temps d’écran et journal. Renommez-les ou retirez-les quand vous voulez.',
-    later: 'Vous retrouverez tout cela dans Réglages → Damascene Studio.',
+    later: 'Vous retrouverez tout cela dans Réglages → Damask Studio.',
     finish: 'Terminer',
   },
 
   appearance: {
     presets: {
-      damascene: 'Damascene', followTheme: 'Suivre le thème', ember: 'Braise', rainbow: 'Arc-en-ciel', ocean: 'Océan', emerald: 'Émeraude',
+      damask: 'Damask', followTheme: 'Suivre le thème', ember: 'Braise', rainbow: 'Arc-en-ciel', ocean: 'Océan', emerald: 'Émeraude',
       gold: 'Or', sunset: 'Couchant', mono: 'Monochrome', vivid: 'Vif', pastel: 'Pastel',
     },
     noteStyles: {
@@ -292,7 +292,7 @@ export const fr: Messages = {
       insertHint: 'Choisissez un bloc à insérer au curseur. Astuce : tapez ;; dans une note pour un choix rapide.',
       search: 'Rechercher : citation, poème, panneau, séparateur…',
     },
-    menu: { insert: 'Insérer un bloc Damascene', wrap: 'Placer dans un bloc Damascene', gallery: 'Ouvrir la galerie…' },
+    menu: { insert: 'Insérer un bloc Damask', wrap: 'Placer dans un bloc Damask', gallery: 'Ouvrir la galerie…' },
     openNoteFirst: 'Ouvrez d’abord une note en mode édition.',
     text: {
       author: 'Auteur', reference: 'Sourate … — ', poemTitle: 'Titre du poème', poet: 'Poète', wisdomTitle: 'Sagesse', term: 'Terme',
@@ -360,7 +360,7 @@ export const fr: Messages = {
   },
 
   home: {
-    disabled: 'Le tableau de bord est désactivé dans Damascene Studio.',
+    disabled: 'Le tableau de bord est désactivé dans Damask Studio.',
     dateFormat: 'dddd D MMMM YYYY',
     search: 'Rechercher dans le coffre…  (Ctrl+O)',
     greet: { night: 'Nuit paisible', morning: 'Bonjour', afternoon: 'Bon après-midi', evening: 'Bonsoir' },
@@ -448,7 +448,7 @@ export const fr: Messages = {
     growth: { title: 'Croissance du coffre' },
     tags: { title: 'Tags les plus utilisés' },
     diagrams: { title: 'Dessins' },
-    footer: { studio: 'Damascene Studio', refresh: 'Actualiser ↻' },
+    footer: { studio: 'Damask Studio', refresh: 'Actualiser ↻' },
   },
 
   stats: {
@@ -578,9 +578,9 @@ export const fr: Messages = {
     },
     oldPlugin: {
       title: 'Vault Studio est toujours actif',
-      detail: 'Damascene Studio le remplace et a déjà repris ses réglages. Les faire tourner ensemble affiche tout en double.',
+      detail: 'Damask Studio le remplace et a déjà repris ses réglages. Les faire tourner ensemble affiche tout en double.',
     },
-    themeOff: { title: 'Le thème Damascene est installé mais pas utilisé', detail: 'Le thème actuel est « {theme} ».', fix: 'Utiliser Damascene' },
+    themeOff: { title: 'Le thème Damask est installé mais pas utilisé', detail: 'Le thème actuel est « {theme} ».', fix: 'Utiliser Damask' },
     styleSettings: { title: 'Style Settings n’est pas installé', detail: 'Installez le plugin Style Settings pour accéder aux options du thème : palettes, polices, interligne et le reste.' },
     excalidrawBg: { title: 'Les dessins Excalidraw ont un fond blanc', detail: 'Suivre le thème d’Obsidian et exporter sans fond rend les dessins transparents et lisibles en mode sombre.' },
     excalidrawFont: { title: 'La police d’Excalidraw est introuvable', detail: '« {path} » n’existe plus, le texte des dessins s’affiche donc avec une autre police.', fix: 'Utiliser la police de l’onglet Coffre' },

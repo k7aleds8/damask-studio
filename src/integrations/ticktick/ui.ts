@@ -1,7 +1,7 @@
 import { handler } from '../../core/dom';
 import { Component, ItemView, Modal, moment, Notice, Platform, setIcon, type App, type WorkspaceLeaf } from 'obsidian';
 import type { Moment } from 'moment';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { dir, formatNumber, formatPercent, m, t } from '../../i18n';
 import { renderFocusStats, renderTaskStats } from '../../stats/views';
 import { bucketOf, type Bucket } from '../../stats/types';
@@ -13,7 +13,7 @@ import { parseQuickAdd } from './quick-add';
 import { focusMinutes, TickTickFocusSource, toTaskItem } from './source';
 import type { TTTask } from './types';
 
-export const TASK_CENTER_VIEW = 'damascene-task-center';
+export const TASK_CENTER_VIEW = 'damask-task-center';
 type Tab = 'tasks' | 'lists' | 'focus' | 'habits' | 'stats' | 'app' | 'help';
 type Groups = ReturnType<TickTickUI['groups']>;
 type Filter = (list: TTTask[]) => TTTask[];
@@ -22,7 +22,7 @@ type Filter = (list: TTTask[]) => TTTask[];
 export class TickTickUI {
   filter: string | null = null;
 
-  constructor(private plugin: DamasceneStudio) {}
+  constructor(private plugin: DamaskStudio) {}
 
   get tt(): TickTickClient { return this.plugin.ticktick!; }
   get S() { return this.plugin.settings.ticktick; }
@@ -655,7 +655,7 @@ export class TickTickUI {
     // Electron's <webview> keeps TickTick's own login in a separate session
     wrap.createEl('webview' as keyof HTMLElementTagNameMap, {
       cls: 'tt-webview',
-      attr: { src: 'https://ticktick.com/webapp', partition: 'persist:damascene-ticktick', allowpopups: '' },
+      attr: { src: 'https://ticktick.com/webapp', partition: 'persist:damask-ticktick', allowpopups: '' },
     });
   }
 
@@ -690,7 +690,7 @@ export class TickTickUI {
       out.setText('');
       const L = (s: string) => { out.textContent += s + '\n'; };
       const M = moment;
-      L(`Damascene Studio ${this.plugin.manifest.version} · ${new Date().toISOString()} · TZ ${timeZone()}`);
+      L(`Damask Studio ${this.plugin.manifest.version} · ${new Date().toISOString()} · TZ ${timeZone()}`);
       const tests: [string, () => Promise<unknown>, (r: unknown) => string][] = [
         ['projects', () => this.tt.get('/project'), (r) => `${(r as unknown[] ?? []).length}`],
         ['inbox', () => this.tt.get('/project/inbox/data'), (r) => `${((r as { tasks?: unknown[] })?.tasks ?? []).length} tasks`],
@@ -718,7 +718,7 @@ function editButton(c: HTMLElement): HTMLButtonElement {
 
 export class TaskCenterView extends ItemView {
   private off: (() => void) | null = null;
-  constructor(leaf: WorkspaceLeaf, private plugin: DamasceneStudio) { super(leaf); }
+  constructor(leaf: WorkspaceLeaf, private plugin: DamaskStudio) { super(leaf); }
   getViewType(): string { return TASK_CENTER_VIEW; }
   getDisplayText(): string { return t('ticktick.center.title'); }
   getIcon(): string { return 'check-check'; }
@@ -751,7 +751,7 @@ export class TaskCenterView extends ItemView {
 }
 
 export class QuickAddModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio) { super(app); }
 
   onOpen(): void {
     const c = this.contentEl;

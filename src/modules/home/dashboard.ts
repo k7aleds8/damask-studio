@@ -1,6 +1,6 @@
 import { handler } from '../../core/dom';
 import { MarkdownRenderChild, setIcon, TFile } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { hasCommand, openGlobalSearch, runCommand } from '../../core/internals';
 import { dir, formatNumber, formatPercent, hijriDate, m, t } from '../../i18n';
 import { renderFocusStats, renderTaskStats } from '../../stats/views';
@@ -12,7 +12,7 @@ import { renderPomodoro } from '../pomodoro/panel';
 import { HomeData } from './data';
 
 /**
- * The dashboard drawn by a ```damascene-home``` code block. Each card reads
+ * The dashboard drawn by a ```damask-home``` code block. Each card reads
  * only what it needs, and anything tied to a folder that this vault does not
  * have is simply left out.
  */
@@ -21,7 +21,7 @@ export class HomeDashboard extends MarkdownRenderChild {
   private w!: Widgets;
   private clockTimer = 0;
 
-  constructor(private plugin: DamasceneStudio, el: HTMLElement, private sourcePath: string) {
+  constructor(private plugin: DamaskStudio, el: HTMLElement, private sourcePath: string) {
     super(el);
   }
 

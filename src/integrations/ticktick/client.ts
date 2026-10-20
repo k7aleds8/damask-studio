@@ -1,6 +1,6 @@
 import { moment, Notice, requestUrl, TFile } from 'obsidian';
 import type { Moment } from 'moment';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';
 import { t } from '../../i18n';
 import { emptyCache, type TTCache, type TTHabit, type TTProject, type TTTask } from './types';
@@ -39,7 +39,7 @@ export class TickTickClient {
   error: string | null = null;
   private listeners = new Set<() => void>();
 
-  constructor(private plugin: DamasceneStudio) {
+  constructor(private plugin: DamaskStudio) {
     this.cache = { ...emptyCache(), ...(readLocal<TTCache>(plugin.app, KEYS.cache) ?? {}) };
   }
 
@@ -178,7 +178,7 @@ export class TickTickClient {
       if (full) this.cache.fullAt = Date.now();
       await this.writeDoneTasks();
     } catch (e) {
-      console.error('[Damascene] TickTick sync', e);
+      console.error('[Damask] TickTick sync', e);
       this.error = (e as Error).message;
     }
     this.busy = false;

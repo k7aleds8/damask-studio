@@ -1,6 +1,6 @@
 // Builds the plugin with esbuild and joins the stylesheets, adding the
 // generated left-to-right overrides. --watch rebuilds on change, --deploy
-// copies the output into a vault whose path comes from DAMASCENE_VAULT or a
+// copies the output into a vault whose path comes from DAMASK_VAULT or a
 // one-line .vault-path file.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,7 +15,7 @@ const watch = args.has('--watch');
 const deploy = args.has('--deploy');
 
 function vaultDir() {
-  if (process.env.DAMASCENE_VAULT) return process.env.DAMASCENE_VAULT;
+  if (process.env.DAMASK_VAULT) return process.env.DAMASK_VAULT;
   const file = path.join(root, '.vault-path');
   if (fs.existsSync(file)) return fs.readFileSync(file, 'utf8').trim();
   return null;
@@ -38,10 +38,10 @@ function copyToVault() {
   if (!deploy) return;
   const vault = vaultDir();
   if (!vault) {
-    console.warn('deploy skipped: set DAMASCENE_VAULT or create .vault-path');
+    console.warn('deploy skipped: set DAMASK_VAULT or create .vault-path');
     return;
   }
-  const target = path.join(vault, '.obsidian', 'plugins', 'damascene-studio');
+  const target = path.join(vault, '.obsidian', 'plugins', 'damask-studio');
   fs.mkdirSync(target, { recursive: true });
   for (const f of outputs()) fs.copyFileSync(f, path.join(target, path.basename(f)));
   console.log(`deployed to ${vault}`);

@@ -11,7 +11,7 @@ export const tr: Messages = {
     done: 'Tamam', edit: 'Düzenle', loading: 'Yükleniyor…', next: 'İleri', open: 'Aç', save: 'Kaydet', search: 'Ara…',
   },
   commands: {
-    openStudio: 'Damascene Studio’yu aç',
+    openStudio: 'Damask Studio’yu aç',
     health: 'Kasa sağlığını denetle',
     noteStyle: 'Açık notun stilini seç',
     openHome: 'Ana sayfayı aç',
@@ -38,7 +38,7 @@ export const tr: Messages = {
   },
 
   studio: {
-    title: 'Damascene Studio',
+    title: 'Damask Studio',
     subtitle: 'Kasanızın görünümü ve araçları tek bir yerde',
     openFileFirst: 'Önce bir dosya açın.',
     tabs: {
@@ -83,7 +83,7 @@ export const tr: Messages = {
       desc: 'Kullanmadıklarınızı kapatın. Kapalı bir modül geride komut, simge ya da stil bırakmaz.',
       integrationsHint: 'Başka uygulamalarla bağlantılar. Siz açana kadar hepsi kapalıdır.',
       items: {
-        home: { name: 'Ana sayfa panosu', desc: 'Bir damascene-home bloğunun çizdiği canlı pano: gün, görevler, odak, alışkanlıklar ve kasa etkinliği.' },
+        home: { name: 'Ana sayfa panosu', desc: 'Bir damask-home bloğunun çizdiği canlı pano: gün, görevler, odak, alışkanlıklar ve kasa etkinliği.' },
         inserter: { name: 'Blok galerisi', desc: 'Temanın tasarladığı alıntılar, kutular, paneller ve ayırıcılar. Notta ;; yazın ya da sağ tık menüsünü kullanın.' },
         embeds: { name: 'Gömme düzeni', desc: 'Çizim ve görselleri notun içinde hizalayın, boyutlandırın, çerçeveleyin ve alt yazı ekleyin.' },
         folders: { name: 'Klasör renkleri', desc: 'Dosya gezgininde klasörleri ve içindeki dosyaları renklendirin; hazır paletler temaya uyar.' },
@@ -135,7 +135,7 @@ export const tr: Messages = {
       title: 'Neler nerede',
       desc: 'Her özelliği kendi klasörlerinize yönlendirin. Boş bıraktığınız alanla ilgili kart gösterilmez.',
       home: 'Ana sayfa notu',
-      homeDesc: 'damascene-home bloğunu içeren not.',
+      homeDesc: 'damask-home bloğunu içeren not.',
       dailyFolder: 'Günlük notlar klasörü',
       dailyAuto: 'Günlük not ayarlarınızı kullanmak için boş bırakın (şu an: {folder}, {format}).',
       dailyFormat: 'Günlük not dosya adı',
@@ -153,16 +153,16 @@ export const tr: Messages = {
     },
     home: {
       title: 'Ana sayfa',
-      desc: 'Pano, bir damascene-home bloğunun olduğu her yerde çizilir.',
+      desc: 'Pano, bir damask-home bloğunun olduğu her yerde çizilir.',
       reading: 'Her zaman okuma görünümünde aç',
       startup: 'Obsidian açılırken başka not açık değilse göster',
       hijri: 'Hicri tarihi göster',
     },
     theme: {
-      title: 'Damascene teması',
+      title: 'Damask teması',
       desc: 'Buğday altını, orman yeşili, kömür ve koyu toprak; eski Şam’ın renklerinden esinlendi. Her mod için bir palet seçin.',
-      missing: 'Damascene teması yüklü değil. Ayarlar → Görünüm → Temalar bölümünden yükleyin.',
-      activate: 'Damascene temasını kullan',
+      missing: 'Damask teması yüklü değil. Ayarlar → Görünüm → Temalar bölümünden yükleyin.',
+      activate: 'Damask temasını kullan',
       mode: 'Mod',
       dark: 'Koyu', light: 'Açık', system: 'Sisteme göre',
       darkVariants: 'Koyu paletler',
@@ -251,7 +251,7 @@ export const tr: Messages = {
 
   onboarding: {
     step: 'Adım {n} / {total}',
-    welcome: 'Damascene Studio’ya hoş geldiniz',
+    welcome: 'Damask Studio’ya hoş geldiniz',
     intro: 'Birkaç seçim yapın, hazırsınız. Her şeyi daha sonra kontrol panelinden değiştirebilirsiniz.',
     modules: 'Neleri kullanmak istersiniz?',
     modulesDesc: 'İhtiyacınız olmayanları kapalı bırakın.',
@@ -261,13 +261,13 @@ export const tr: Messages = {
     createHome: 'Ana sayfa notu oluştur',
     habits: 'Birkaç örnek alışkanlıkla başla',
     habitsDesc: 'Okuma, egzersiz, uyku, ekran süresi ve günlük. İstediğiniz zaman adlarını değiştirin ya da kaldırın.',
-    later: 'Bunların hepsini Ayarlar → Damascene Studio altında bulabilirsiniz.',
+    later: 'Bunların hepsini Ayarlar → Damask Studio altında bulabilirsiniz.',
     finish: 'Bitir',
   },
 
   appearance: {
     presets: {
-      damascene: 'Damascene', followTheme: 'Temayı izle', ember: 'Kor', rainbow: 'Gökkuşağı', ocean: 'Okyanus', emerald: 'Zümrüt',
+      damask: 'Damask', followTheme: 'Temayı izle', ember: 'Kor', rainbow: 'Gökkuşağı', ocean: 'Okyanus', emerald: 'Zümrüt',
       gold: 'Altın', sunset: 'Gün batımı', mono: 'Tek renk', vivid: 'Canlı', pastel: 'Pastel',
     },
     noteStyles: {
@@ -293,7 +293,7 @@ export const tr: Messages = {
       insertHint: 'İmlecin olduğu yere eklemek için bir blok seçin. İpucu: hızlı seçim için notta ;; yazın.',
       search: 'Ara: alıntı, şiir, panel, ayırıcı…',
     },
-    menu: { insert: 'Damascene bloğu ekle', wrap: 'Damascene bloğuna al', gallery: 'Galeriyi aç…' },
+    menu: { insert: 'Damask bloğu ekle', wrap: 'Damask bloğuna al', gallery: 'Galeriyi aç…' },
     openNoteFirst: 'Önce bir notu düzenleme görünümünde açın.',
     text: {
       author: 'Söyleyen', reference: 'Sure … — ', poemTitle: 'Şiirin adı', poet: 'Şair', wisdomTitle: 'Hikmet', term: 'Terim',
@@ -361,7 +361,7 @@ export const tr: Messages = {
   },
 
   home: {
-    disabled: 'Ana sayfa panosu Damascene Studio’da kapalı.',
+    disabled: 'Ana sayfa panosu Damask Studio’da kapalı.',
     dateFormat: 'D MMMM YYYY, dddd',
     search: 'Kasada ara…  (Ctrl+O)',
     greet: { night: 'Sakin bir gece', morning: 'Günaydın', afternoon: 'Tünaydın', evening: 'İyi akşamlar' },
@@ -449,7 +449,7 @@ export const tr: Messages = {
     growth: { title: 'Kasanın büyümesi' },
     tags: { title: 'En çok kullanılan etiketler' },
     diagrams: { title: 'Çizimler' },
-    footer: { studio: 'Damascene Studio', refresh: 'Yenile ↻' },
+    footer: { studio: 'Damask Studio', refresh: 'Yenile ↻' },
   },
 
   stats: {
@@ -579,9 +579,9 @@ export const tr: Messages = {
     },
     oldPlugin: {
       title: 'Vault Studio hâlâ açık',
-      detail: 'Damascene Studio onun yerini alıyor ve ayarlarını zaten aktardı. İkisi birlikte çalışınca her şey iki kez çizilir.',
+      detail: 'Damask Studio onun yerini alıyor ve ayarlarını zaten aktardı. İkisi birlikte çalışınca her şey iki kez çizilir.',
     },
-    themeOff: { title: 'Damascene teması yüklü ama kullanılmıyor', detail: 'Şu anki tema: “{theme}”.', fix: 'Damascene’i kullan' },
+    themeOff: { title: 'Damask teması yüklü ama kullanılmıyor', detail: 'Şu anki tema: “{theme}”.', fix: 'Damask’i kullan' },
     styleSettings: { title: 'Style Settings yüklü değil', detail: 'Temanın paletler, yazı tipleri, satır aralığı gibi seçeneklerine ulaşmak için Style Settings eklentisini yükleyin.' },
     excalidrawBg: { title: 'Excalidraw çizimleri beyaz arka planla görünüyor', detail: 'Obsidian temasına uymak ve arka plansız dışa aktarmak, çizimleri saydam ve koyu modda okunur yapar.' },
     excalidrawFont: { title: 'Excalidraw yazı tipi dosyası eksik', detail: '“{path}” artık yok; bu yüzden çizimlerdeki yazılar başka bir yazı tipiyle görünüyor.', fix: 'Kasa ayarındaki yazı tipini kullan' },

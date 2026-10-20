@@ -1,5 +1,5 @@
 import { ItemView, setIcon, type WorkspaceLeaf } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { svg, uid, handler } from '../../core/dom';
 import { dir, t } from '../../i18n';
 import { renderFocusStats } from '../../stats/views';
@@ -9,7 +9,7 @@ import type { PomoMode } from './engine';
 export interface PomoTaskChoice { title: string; ticktickId?: string; group: string }
 
 /** The timer dial with its controls. `mini` is the compact version on the home page. */
-export function renderPomodoro(parent: HTMLElement, plugin: DamasceneStudio, choices: PomoTaskChoice[], mini: boolean, rerender: () => void): HTMLElement {
+export function renderPomodoro(parent: HTMLElement, plugin: DamaskStudio, choices: PomoTaskChoice[], mini: boolean, rerender: () => void): HTMLElement {
   const P = plugin.pomodoro!;
   const s = P.st;
   const c = parent.createDiv(`tt-pomo${mini ? ' is-mini' : ''} is-${s.mode}${s.running ? ' is-running' : ''}${s.pausedAt ? ' is-paused' : ''}`);
@@ -92,7 +92,7 @@ export function renderPomodoro(parent: HTMLElement, plugin: DamasceneStudio, cho
 }
 
 /** Timer settings shown beside the big dial. */
-export function renderPomodoroSettings(parent: HTMLElement, plugin: DamasceneStudio): void {
+export function renderPomodoroSettings(parent: HTMLElement, plugin: DamaskStudio): void {
   const cfg = plugin.settings.pomodoro;
   const box = parent.createDiv('tt-focus-cfg');
   box.createDiv({ cls: 'tt-ed-label', text: t('pomodoro.settings.title') });
@@ -127,12 +127,12 @@ export function renderPomodoroSettings(parent: HTMLElement, plugin: DamasceneStu
   box.createDiv({ cls: 'qh-muted', text: plugin.ticktick?.active ? t('pomodoro.settings.savedBoth') : t('pomodoro.settings.savedLocal') });
 }
 
-export const FOCUS_VIEW = 'damascene-focus';
+export const FOCUS_VIEW = 'damask-focus';
 
 /** Stand-alone timer and focus stats, used when no task app is connected. */
 export class FocusView extends ItemView {
   private off: (() => void) | null = null;
-  constructor(leaf: WorkspaceLeaf, private plugin: DamasceneStudio) { super(leaf); }
+  constructor(leaf: WorkspaceLeaf, private plugin: DamaskStudio) { super(leaf); }
   getViewType(): string { return FOCUS_VIEW; }
   getDisplayText(): string { return t('pomodoro.viewTitle'); }
   getIcon(): string { return 'timer'; }

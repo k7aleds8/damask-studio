@@ -1,5 +1,5 @@
 import { Modal, moment, Notice, setIcon, type App } from 'obsidian';
-import type DamasceneStudio from '../../main';
+import type DamaskStudio from '../../main';
 import { segmented, handler } from '../../core/dom';
 import { dir, language, m, t } from '../../i18n';
 import { timeZone, ttTime, type TickTickClient } from './client';
@@ -38,7 +38,7 @@ export class TaskEditModal extends Modal {
   private d: TTTask;
   private isNew: boolean;
 
-  constructor(app: App, private plugin: DamasceneStudio, private task: TTTask | null) {
+  constructor(app: App, private plugin: DamaskStudio, private task: TTTask | null) {
     super(app);
     this.isNew = !task;
     this.d = task ? structuredClone(task) : { id: '', title: '', content: '', status: 0, priority: 0, tags: [], items: [], projectId: plugin.ticktick!.defaultProjectId() };
@@ -262,7 +262,7 @@ function swatchPicker(parent: HTMLElement, initial: string, onPick: (c: string) 
 }
 
 export class ListModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio, private project: TTProject | null) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio, private project: TTProject | null) { super(app); }
 
   onOpen(): void {
     const c = this.contentEl;
@@ -294,7 +294,7 @@ export class ListModal extends Modal {
 }
 
 export class HabitModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio, private habit: TTHabit | null) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio, private habit: TTHabit | null) { super(app); }
 
   onOpen(): void {
     const c = this.contentEl;
@@ -341,7 +341,7 @@ export class HabitModal extends Modal {
 }
 
 export class TrashModal extends Modal {
-  constructor(app: App, private plugin: DamasceneStudio) { super(app); }
+  constructor(app: App, private plugin: DamaskStudio) { super(app); }
   onOpen(): void { this.draw(); }
   onClose(): void { this.contentEl.empty(); }
 

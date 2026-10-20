@@ -8,7 +8,7 @@ import { HomeDashboard } from './modules/home/dashboard';
 import { registerInserterHooks } from './modules/inserter/gallery';
 import { findLegacyNotes } from './modules/health/legacy';
 import { FOCUS_VIEW, FocusView } from './modules/pomodoro/panel';
-import { fromLegacy, readLegacy, upgrade } from './settings/migrate';
+import { fromLegacy, readLegacy, readPreviousName, upgrade } from './settings/migrate';
 import type { StudioSettings } from './settings/types';
 import { LocalFocusSource, VaultTaskSource } from './stats/vault-source';
 import type { FocusSource, TaskSource } from './stats/types';
@@ -19,7 +19,7 @@ import { PreviewController } from './ui/preview/controller';
 
 type FeatureId = 'home' | 'inserter' | 'embeds' | 'appearance' | 'pomodoro' | 'habits' | 'ticktick';
 
-export default class DamasceneStudio extends Plugin {
+export default class DamaskStudio extends Plugin {
   settings!: StudioSettings;
   paths!: VaultPaths;
   vaultTasks!: VaultTaskSource;
@@ -53,8 +53,8 @@ export default class DamasceneStudio extends Plugin {
       },
     });
 
-    // the old name stays registered so existing home notes keep rendering
-    for (const lang of ['damascene-home', 'qomra-home']) {
+    // the earlier block names stay registered so existing home notes keep rendering
+    for (const lang of ['damask-home', 'damascene-home', 'qomra-home']) {
       this.registerMarkdownCodeBlockProcessor(lang, (_src, el, ctx) => {
         if (!this.settings.modules.home) { el.setText(t('home.disabled')); return; }
         const home = new HomeDashboard(this, el, ctx.sourcePath);
@@ -89,6 +89,8 @@ export default class DamasceneStudio extends Plugin {
   private async loadSettings(): Promise<void> {
     const saved = (await this.loadData()) as Record<string, unknown> | null;
     if (saved) { this.settings = upgrade(saved); return; }
+    const previous = await readPreviousName(this.app);
+    if (previous) { this.settings = upgrade(previous); await this.saveSettings(); return; }
     const legacy = await readLegacy(this.app);
     this.settings = legacy ? fromLegacy(this.app, legacy) : upgrade({});
     await this.saveSettings();
@@ -214,7 +216,7 @@ export default class DamasceneStudio extends Plugin {
     for (const h of [...this.homes]) {
       if (!h.el.isConnected) { this.homes.delete(h); continue; }
       if (!force && h.el.matches(':hover')) continue;
-      try { h.render(); } catch (e) { console.error('[Damascene] home', e); }
+      try { h.render(); } catch (e) { console.error('[Damask] home', e); }
     }
   }
 

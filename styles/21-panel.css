@@ -1,8 +1,8 @@
 /* ---------- control panel ----------
-   Laid out like a page of a Damascene manuscript: a cartouche for the title,
+   Laid out like a page of a Damask manuscript: a cartouche for the title,
    a tiled mosaic for navigation with gold grout between the tiles, a ruled
    ledger for the numbers, and an index of shortcuts. Every surface reads the
-   theme's palette when Damascene is active and falls back to Obsidian's own
+   theme's palette when Damask is active and falls back to Obsidian's own
    colors otherwise, so the panel looks at home under any theme. */
 
 .vs-root {
@@ -32,7 +32,7 @@
   container-type: inline-size;
 }
 /* a full-width tab would stretch every card into a long thin strip */
-.workspace-leaf-content[data-type="damascene-studio"] .vs-root {
+.workspace-leaf-content[data-type="damask-studio"] .vs-root {
   max-width: 920px;
   margin-inline: auto;
 }

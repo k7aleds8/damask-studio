@@ -43,7 +43,7 @@ body.theme-light .qh-root, body.theme-light .tt-root, body.theme-light .modal.tt
 .dm-home .inline-title, .dm-home .metadata-container, .dm-home .embedded-backlinks, .dm-home .mod-header .frontmatter-container { display: none !important; }
 .markdown-preview-view.dm-home, .markdown-source-view.dm-home { --file-line-width: 1440px; --line-width: 1440px; padding-inline: 20px !important; }
 .dm-home .markdown-preview-sizer { max-width: 1440px !important; padding-bottom: 48px !important; }
-.dm-home .block-language-damascene-home, .dm-home .block-language-qomra-home { margin: 0; }
+.dm-home .block-language-damask-home, .dm-home .block-language-qomra-home { margin: 0; }
 
 .qh-root { font-size: 15px; line-height: 1.6; color: var(--dm-text, var(--text-normal)); font-family: var(--qh-num); }
 .qh-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }

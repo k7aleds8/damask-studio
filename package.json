@@ -1,0 +1,30 @@
+{
+  "name": "damascene-studio",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Damascene Studio, the companion plugin for the Damascene Obsidian theme",
+  "license": "MIT",
+  "author": "k7aleds8",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.mjs --watch --deploy",
+    "build": "node scripts/build.mjs",
+    "deploy": "node scripts/build.mjs --deploy",
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "version": "node scripts/version-bump.mjs && git add manifest.json versions.json"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.30.1",
+    "eslint-plugin-obsidianmd": "^0.4.2",
+    "obsidian": "^1.14.4",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^4.0.0"
+  }
+}

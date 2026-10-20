@@ -1,0 +1,21 @@
+# Changelog
+
+## 2.0.0 — unreleased
+
+First public release, renamed from Vault Studio.
+
+- Rewritten in TypeScript, split into modules that can each be switched off.
+- Control panel with module switches, an Integrations tab and animated previews
+  for module, insertion and embed options.
+- TickTick is optional and off by default. When it is off, task and focus stats
+  are computed from `- [ ]` lines in the vault and from the built-in focus timer.
+- The focus timer keeps its sessions in the vault, with or without TickTick.
+- Every folder the plugin uses is configurable; daily notes follow the core
+  Daily notes or Periodic Notes settings.
+- First-run setup: language, modules, home note, starter habits.
+- Interface in English, Arabic, French, Spanish and Turkish, with proper plural
+  rules and right-to-left layout for Arabic.
+- Quick add understands dates and times in all five languages.
+- Settings, TickTick token and sync state carry over from Vault Studio.
+- SVG images without a fixed size no longer collapse to nothing in the embed layout.
+- Habit goals wrap under the habit name in narrow dashboard cards instead of being cut off.

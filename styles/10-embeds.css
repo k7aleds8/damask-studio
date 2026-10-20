@@ -1,0 +1,151 @@
+/* ---------- embed layout engine ---------- */
+.vs-embed {
+  display: block !important;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--vs-w, fit-content) !important;
+  max-width: min(100%, var(--vs-max, none)) !important;
+  padding: var(--vs-pad, 0);
+  border-radius: var(--vs-radius, 0);
+  margin-block: 14px !important;
+  transition: width .18s ease, max-width .18s ease, box-shadow .2s ease, background .2s ease;
+}
+.vs-embed:not(.vs-has-w) { width: fit-content !important; }
+/* an SVG with only a viewBox has no natural width, so fit-content would
+   shrink it to nothing; let it fill the line instead */
+.vs-embed:not(.vs-has-w):has(> img[src*=".svg"]) { width: 100% !important; }
+.vs-embed:not(.vs-has-w) > img[src*=".svg"] { width: 100%; }
+.vs-embed.vs-no-max { --vs-max: none !important; } /* while dragging, beats the inline value */
+.vs-embed img,
+.vs-embed svg:not(svg svg),
+.vs-embed canvas {
+  display: block;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-inline: auto;
+  border-radius: calc(var(--vs-radius, 0) * .8);
+}
+.vs-embed.vs-has-w img,
+.vs-embed.vs-has-w svg:not(svg svg),
+.vs-embed.vs-has-w canvas,
+.vs-embed.vs-has-w .excalidraw-embedded-img,
+.vs-embed.vs-has-w .excalidraw-svg,
+.vs-embed.vs-has-w .image-embed {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+/* remove the default embed chrome around excalidraw drawings */
+.vs-embed.markdown-embed,
+.vs-embed .markdown-embed { border: none !important; padding-inline: 0; background: transparent; }
+
+/* floats (text wrap) */
+.vs-embed.vs-float-right { float: right; margin: 6px 0 12px 22px !important; }
+.vs-embed.vs-float-left  { float: left;  margin: 6px 22px 12px 0 !important; }
+.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3, .markdown-rendered hr { clear: both; }
+
+/* frames */
+.vs-embed.vs-frame-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  padding: max(var(--vs-pad, 0px), 14px);
+}
+.vs-embed.vs-frame-glass {
+  background: color-mix(in srgb, var(--background-primary) 55%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--text-normal) 12%, transparent);
+  padding: max(var(--vs-pad, 0px), 14px);
+}
+.vs-embed.vs-frame-outline {
+  border: 2px solid color-mix(in srgb, var(--interactive-accent) 70%, transparent);
+  padding: max(var(--vs-pad, 0px), 10px);
+}
+.vs-embed.vs-frame-polaroid {
+  background: #fbfbf8;
+  padding: 12px 12px 14px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .35);
+}
+.vs-embed.vs-frame-polaroid .vs-caption { color: #333; font-style: normal; }
+.vs-embed.vs-shadow { box-shadow: 0 14px 36px rgba(0, 0, 0, .38), 0 2px 6px rgba(0, 0, 0, .25); }
+.vs-embed.vs-bg-paper { background: #ffffff; }
+.vs-embed.vs-bg-theme { background: var(--background-secondary); }
+
+/* colour inversion for white-background images in dark mode */
+.vs-embed.vs-inv-always :is(img, svg:not(svg svg), canvas),
+.theme-dark .vs-embed.vs-inv-dark :is(img, svg:not(svg svg), canvas) { filter: invert(.93) hue-rotate(180deg); }
+
+.vs-caption {
+  text-align: center;
+  font-size: .86em;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ---------- hover toolbar & resize frame ---------- */
+.vs-bar {
+  position: fixed;
+  z-index: var(--layer-popover, 30);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--background-primary) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--background-modifier-border);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+.vs-bar.is-on { opacity: 1; pointer-events: auto; transform: none; }
+.vs-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; padding: 0 !important;
+  background: transparent !important; box-shadow: none !important;
+  border-radius: 8px; color: var(--text-muted); cursor: pointer;
+}
+.vs-icon-btn:hover { background: var(--background-modifier-hover) !important; color: var(--text-normal); }
+.vs-icon-btn.is-active { background: color-mix(in srgb, var(--interactive-accent) 22%, transparent) !important; color: var(--interactive-accent); }
+.vs-icon-btn svg { width: 16px; height: 16px; }
+.vs-sep { width: 1px; height: 20px; background: var(--background-modifier-border); margin: 0 4px; }
+.vs-wlabel {
+  min-width: 48px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums;
+  color: var(--text-normal); cursor: pointer; padding: 3px 6px; border-radius: 6px;
+}
+.vs-wlabel:hover { background: var(--background-modifier-hover); }
+
+.vs-frame {
+  position: fixed;
+  z-index: calc(var(--layer-popover, 30) - 1);
+  pointer-events: none;
+  border: 1.5px dashed color-mix(in srgb, var(--interactive-accent) 70%, transparent);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.vs-frame.is-on { opacity: 1; }
+.vs-handle {
+  position: absolute; top: 50%; width: 10px; height: 46px; margin-top: -23px;
+  background: var(--interactive-accent); border-radius: 6px; pointer-events: auto;
+  cursor: ew-resize; box-shadow: 0 0 0 3px color-mix(in srgb, var(--background-primary) 70%, transparent);
+}
+.vs-frame:not(.is-on) .vs-handle { pointer-events: none; }
+.vs-handle-l { left: -6px; }
+.vs-handle-r { right: -6px; }
+.vs-handle:hover { transform: scaleX(1.25); }
+.vs-size-tag {
+  position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; padding: 2px 8px; border-radius: 999px;
+  background: var(--interactive-accent); color: var(--text-on-accent); opacity: 0; transition: opacity .15s;
+}
+body.vs-dragging .vs-size-tag { opacity: 1; }
+body.vs-dragging, body.vs-dragging * { cursor: ew-resize !important; user-select: none !important; }
+
+/* ---------- note style classes provided by the plugin ---------- */
+.vs-wide { --file-line-width: 100%; --line-width: 100%; }
+.vs-justify .markdown-rendered p, .vs-justify .cm-line:not(.HyperMD-header) { text-align: justify; }
+

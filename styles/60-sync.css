@@ -1,0 +1,13 @@
+/* ---------- two-way sync: modals, mirror notes ---------- */
+.qh-hx-acts { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.qh-link-2 { margin-inline-start: 14px; color: var(--dm-muted); }
+.tm-confirm h3, .tm-trash h3, .tm-habits h3 { margin: 0 0 6px; }
+.tm-list { max-height: 220px; overflow: auto; margin: 10px 0; padding: 8px 26px 8px 10px; border-radius: 10px; background: var(--qh-sunk); border: 1px solid var(--qh-line); font-size: .86em; }
+.tm-trash-list, .tm-hlist { display: grid; margin: 10px 0 14px; border: 1px solid var(--qh-line); border-radius: 12px; overflow: hidden; }
+.tm-trash-row, .tm-hrow { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+.tm-trash-row + .tm-trash-row, .tm-hrow + .tm-hrow { border-top: 1px solid var(--qh-line); }
+.tm-trash-t, .tm-hname { flex: 1; min-width: 0; } .tm-trash-name, .tm-hname > div:first-child { font-weight: 600; }
+.modal:has(.tm-trash), .modal:has(.tm-habits), .modal:has(.tm-confirm) { width: min(640px, 94vw); }
+/* the list notes themselves */
+.tt-mirror .task-list-item { padding-block: 2px; }
+.tt-mirror h2 { font-size: 1.05em; }

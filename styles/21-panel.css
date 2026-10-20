@@ -1,0 +1,504 @@
+/* ---------- control panel ----------
+   Laid out like a page of a Damascene manuscript: a cartouche for the title,
+   a tiled mosaic for navigation with gold grout between the tiles, a ruled
+   ledger for the numbers, and an index of shortcuts. Every surface reads the
+   theme's palette when Damascene is active and falls back to Obsidian's own
+   colors otherwise, so the panel looks at home under any theme. */
+
+.vs-root {
+  --st-gold: var(--dm-accent, var(--interactive-accent));
+  --st-gold-deep: color-mix(in srgb, var(--st-gold) 62%, #000);
+  --st-ink: var(--dm-text, var(--text-normal));
+  --st-muted: var(--dm-muted, var(--text-muted));
+  --st-faint: var(--dm-faint, var(--text-faint));
+  --st-on-gold: var(--dm-on-accent, var(--text-on-accent));
+  --st-bg: var(--dm-bg, var(--background-primary));
+  --st-panel: color-mix(in srgb, var(--dm-bg3, var(--background-secondary)) 40%, var(--st-bg));
+  --st-raise: color-mix(in srgb, var(--dm-bg3, var(--background-secondary)) 78%, var(--st-bg));
+  --st-line: color-mix(in srgb, var(--st-gold) 16%, var(--background-modifier-border));
+  --st-line-strong: color-mix(in srgb, var(--st-gold) 42%, transparent);
+  --st-ok: var(--dm-forest, var(--color-green));
+  --st-warn: var(--dm-wheat, var(--color-orange));
+  --st-gap: 16px;
+  --st-ease: cubic-bezier(.2, .8, .2, 1);
+  /* own copies of the theme's shapes, so the panel keeps its ornament under other themes */
+  --st-khatam: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='20,20 80,20 80,80 20,80'/><polygon points='50,7.6 92.4,50 50,92.4 7.6,50'/></svg>");
+  --st-khatam-ring: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='black' stroke-width='2.4'><polygon points='22,22 78,22 78,78 22,78'/><polygon points='50,10.4 89.6,50 50,89.6 10.4,50'/></svg>");
+  --st-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' fill='none' stroke='black' stroke-width='1'><polygon points='18,18 42,18 42,42 18,42'/><polygon points='30,13 47,30 30,47 13,30'/><path d='M0 30h13M47 30h13M30 0v13M30 47v13'/><path d='M0 0l18 18M60 0L42 18M0 60l18-18M60 60L42 42'/></svg>");
+  --st-corner: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'><path d='M58 2H20C10 2 2 10 2 20v38'/><path d='M50 10H24c-8 0-14 6-14 14v26'/><path d='M34 10c0 9-6 15-15 15'/><circle cx='12' cy='12' r='3' fill='black' stroke='none'/></svg>");
+  --st-diamond: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'><path d='M60 2l10 10-10 10-10-10z'/><circle cx='38' cy='12' r='2.6'/><circle cx='82' cy='12' r='2.6'/><circle cx='26' cy='12' r='1.6'/><circle cx='94' cy='12' r='1.6'/></svg>");
+  padding: 14px 12px 44px;
+  color: var(--st-ink);
+  container-type: inline-size;
+}
+/* a full-width tab would stretch every card into a long thin strip */
+.workspace-leaf-content[data-type="damascene-studio"] .vs-root {
+  max-width: 920px;
+  margin-inline: auto;
+}
+.vs-root svg.svg-icon { stroke-width: 1.75; }
+
+/* --- cartouche ------------------------------------------------------------ */
+.vs-head {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 18px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 140% at 100% 0, color-mix(in srgb, var(--st-gold) 22%, transparent), transparent 58%),
+    var(--st-panel);
+  border: 1px solid var(--st-line-strong);
+  box-shadow: inset 0 0 0 4px var(--st-bg), inset 0 0 0 5px var(--st-line);
+}
+.vs-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--st-gold);
+  opacity: .1;
+  -webkit-mask: var(--st-girih) 0 0 / 38px 38px repeat, linear-gradient(to left, #000, transparent 70%);
+  -webkit-mask-composite: source-in;
+  mask: var(--st-girih) 0 0 / 38px 38px repeat, linear-gradient(to left, #000, transparent 70%);
+  mask-composite: intersect;
+}
+.vs-head:dir(ltr)::before {
+  -webkit-mask: var(--st-girih) 0 0 / 38px 38px repeat, linear-gradient(to right, #000, transparent 70%);
+  mask: var(--st-girih) 0 0 / 38px 38px repeat, linear-gradient(to right, #000, transparent 70%);
+}
+.vs-head:dir(ltr) { background: radial-gradient(120% 140% at 0 0, color-mix(in srgb, var(--st-gold) 22%, transparent), transparent 58%), var(--st-panel); }
+
+.vs-logo { position: relative; flex: none; display: grid; place-items: center; width: 58px; height: 58px; }
+.vs-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--st-gold), var(--st-gold-deep));
+  -webkit-mask: var(--st-khatam) center / contain no-repeat;
+  mask: var(--st-khatam) center / contain no-repeat;
+  filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--st-gold) 45%, transparent));
+}
+.vs-logo::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  background: var(--st-gold);
+  opacity: .45;
+  -webkit-mask: var(--st-khatam-ring) center / contain no-repeat;
+  mask: var(--st-khatam-ring) center / contain no-repeat;
+  animation: vs-turn 60s linear infinite;
+}
+@keyframes vs-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .vs-logo::after { animation: none; } }
+.vs-logo-ic { position: relative; z-index: 1; display: grid; color: var(--st-on-gold); }
+.vs-logo-ic svg { width: 22px; height: 22px; stroke-width: 2; }
+.vs-head-text { min-width: 0; }
+.vs-title { font-size: 1.42em; font-weight: 800; line-height: 1.2; letter-spacing: 0; color: var(--st-ink); }
+.vs-sub { margin-top: 3px; font-size: .84em; line-height: 1.5; color: var(--st-muted); }
+
+/* the gilded rule under the cartouche */
+.vs-rule {
+  height: 16px;
+  margin: 14px 6px 16px;
+  background:
+    linear-gradient(to left, transparent, var(--st-line-strong) 30%, transparent 45%, transparent 55%, var(--st-line-strong) 70%, transparent) center / 100% 1px no-repeat;
+  position: relative;
+}
+.vs-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 96px;
+  background: var(--st-gold);
+  -webkit-mask: var(--st-diamond) center / contain no-repeat;
+  mask: var(--st-diamond) center / contain no-repeat;
+}
+
+/* --- mosaic navigation -------------------------------------------------- */
+.vs-tabs {
+  display: grid;
+  /* fixed counts that divide twelve, so rows close cleanly; the grout is
+     drawn by each tile's outline, so a short last row leaves no gold hole */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 22px;
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--st-bg);
+  border: 1px solid var(--st-line);
+}
+@container (max-width: 300px) { .vs-tabs { grid-template-columns: repeat(3, 1fr); } }
+@container (min-width: 620px) { .vs-tabs { grid-template-columns: repeat(6, 1fr); } }
+.vs-root .vs-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 70px;
+  height: auto;
+  padding: 12px 6px 10px;
+  border: 0;
+  border-radius: 0;
+  background: var(--st-bg);
+  box-shadow: none;
+  outline: 1px solid var(--st-line);
+  color: var(--st-muted);
+  font-size: .76em;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .2s var(--st-ease), color .2s var(--st-ease);
+}
+.vs-root .vs-tab:hover { background: var(--st-raise); color: var(--st-ink); }
+.vs-root .vs-tab:focus-visible { outline: 2px solid var(--st-gold); outline-offset: -2px; }
+.vs-tab-ic { display: grid; transition: transform .25s var(--st-ease); }
+.vs-tab-ic svg { width: 19px; height: 19px; }
+.vs-tab:hover .vs-tab-ic { transform: translateY(-1px); }
+.vs-tab-l { display: block; max-width: 100%; overflow-wrap: anywhere; }
+.vs-root .vs-tab.is-active {
+  background:
+    radial-gradient(90% 80% at 50% 0, color-mix(in srgb, var(--st-gold) 20%, transparent), transparent 75%),
+    var(--st-raise);
+  color: var(--st-gold);
+  font-weight: 700;
+}
+.vs-tab.is-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 26%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--st-gold), transparent);
+}
+.vs-tab.is-active::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  background: var(--st-gold);
+  -webkit-mask: var(--st-khatam) center / contain no-repeat;
+  mask: var(--st-khatam) center / contain no-repeat;
+}
+
+/* --- cards ---------------------------------------------------------------- */
+.vs-card {
+  position: relative;
+  isolation: isolate;
+  margin-bottom: var(--st-gap);
+  padding: 16px 18px 16px;
+  border-radius: 18px;
+  background: var(--st-panel);
+  border: 1px solid var(--st-line);
+}
+.vs-card::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  inset-inline-end: 9px;
+  width: 30px;
+  height: 30px;
+  z-index: -1;
+  background: var(--st-gold);
+  opacity: .5;
+  pointer-events: none;
+  -webkit-mask: var(--st-corner) center / contain no-repeat;
+  mask: var(--st-corner) center / contain no-repeat;
+  transform: scaleX(-1);
+}
+.vs-card:dir(rtl)::before { transform: none; }
+.vs-card-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 0 0 12px;
+}
+.vs-card-head::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(to left, var(--st-line-strong), transparent 85%);
+}
+.vs-card-head:dir(ltr)::after { background: linear-gradient(to right, var(--st-line-strong), transparent 85%); }
+.vs-card-ic, .vs-q-ic {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--st-gold);
+}
+.vs-card-ic::before, .vs-q-ic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--st-gold) 15%, transparent);
+  -webkit-mask: var(--st-khatam) center / contain no-repeat;
+  mask: var(--st-khatam) center / contain no-repeat;
+}
+.vs-card-ic svg, .vs-q-ic svg { width: 16px; height: 16px; }
+.vs-card-title { font-size: 1em; font-weight: 700; line-height: 1.35; }
+.vs-card-desc { margin: -2px 0 10px; }
+.vs-card .setting-item {
+  padding: 14px 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px dashed var(--st-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.vs-card .setting-item-info { padding-inline-end: 14px; }
+.vs-card .setting-item:first-of-type, .vs-card-desc + .setting-item { border-top: none; }
+.vs-card .setting-item-name { font-weight: 600; }
+.vs-card .setting-item-description { color: var(--st-muted); line-height: 1.55; padding-top: 3px; }
+
+.vs-muted { color: var(--st-muted); font-size: .86em; line-height: 1.65; }
+.vs-empty { color: var(--st-faint); padding: 12px 0; text-align: center; }
+.vs-note { font-size: .84em; color: var(--st-warn); margin: 8px 0; padding: 8px 12px; border-radius: 10px; background: color-mix(in srgb, var(--st-warn) 10%, transparent); }
+.vs-h4 { margin: 20px 0 6px; color: var(--st-gold); font-size: .92em; font-weight: 700; }
+.vs-val { min-width: 54px; text-align: center; font-variant-numeric: tabular-nums; color: var(--st-muted); font-size: .85em; }
+.vs-input { width: 100%; margin: 8px 0 12px; }
+.vs-row-end { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-start; margin-top: 16px; }
+.vs-root .vs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 6px 0;
+  height: auto;
+  background: transparent;
+  box-shadow: none;
+  color: var(--st-gold);
+  font-weight: 600;
+  font-size: .86em;
+  cursor: pointer;
+}
+.vs-root .vs-link:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--st-line-strong); }
+
+/* --- ledger of numbers ------------------------------------------------------ */
+.vs-ledger {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: 1px;
+  margin-bottom: var(--st-gap);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--st-line);
+  border: 1px solid var(--st-line);
+}
+.vs-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 14px 14px;
+  background: var(--st-panel);
+  text-align: start;
+  transition: background-color .2s var(--st-ease);
+}
+.vs-stat:hover { background: var(--st-raise); }
+.vs-stat-ic { position: absolute; top: 12px; inset-inline-end: 12px; color: var(--st-gold); opacity: .5; display: grid; }
+.vs-stat-ic svg { width: 15px; height: 15px; }
+.vs-stat-n {
+  margin-top: 10px;
+  font-family: var(--qh-num, inherit);
+  font-size: 1.62em;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--st-ink);
+}
+.vs-stat-l { font-size: .76em; color: var(--st-muted); }
+
+/* --- status seal ------------------------------------------------------------ */
+.vs-card.vs-status.is-ok {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 12px 16px;
+  background: linear-gradient(to left, color-mix(in srgb, var(--st-ok) 14%, transparent), transparent 75%), var(--st-panel);
+  border-color: color-mix(in srgb, var(--st-ok) 35%, var(--st-line));
+}
+.vs-card.vs-status.is-ok:dir(ltr) { background: linear-gradient(to right, color-mix(in srgb, var(--st-ok) 14%, transparent), transparent 75%), var(--st-panel); }
+.vs-status.is-ok::before { display: none; }
+.vs-status.is-ok .vs-card-head { margin: 0; padding: 0; }
+.vs-status.is-ok .vs-card-head::after { display: none; }
+.vs-status.is-ok .vs-card-ic { color: var(--st-ok); }
+.vs-status.is-ok .vs-card-ic::before { background: color-mix(in srgb, var(--st-ok) 18%, transparent); }
+.vs-status.is-ok .vs-link { margin: 0; }
+.vs-card.vs-status.is-warn { border-color: color-mix(in srgb, var(--st-warn) 45%, var(--st-line)); }
+.vs-status.is-warn .vs-card-ic { color: var(--st-warn); }
+.vs-status.is-warn .vs-card-ic::before { background: color-mix(in srgb, var(--st-warn) 18%, transparent); }
+
+/* --- index of shortcuts -------------------------------------------------- */
+.vs-quick { margin-top: -4px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); column-gap: 22px; }
+.vs-root .vs-q {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+  padding: 7px 2px;
+  border: 0;
+  border-bottom: 1px dashed var(--st-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--st-ink);
+  font-size: .88em;
+  font-weight: 500;
+  text-align: start;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: color .2s var(--st-ease);
+}
+.vs-q-l { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vs-q-go { display: grid; color: var(--st-faint); transition: transform .25s var(--st-ease), color .2s var(--st-ease); }
+.vs-q-go svg { width: 15px; height: 15px; }
+.vs-root .vs-q:hover { color: var(--st-gold); background: transparent; }
+.vs-q:hover .vs-q-go { color: var(--st-gold); transform: translateX(3px); }
+.vs-q:dir(rtl):hover .vs-q-go { transform: translateX(-3px); }
+.vs-q:hover .vs-q-ic::before { background: color-mix(in srgb, var(--st-gold) 28%, transparent); }
+
+/* --- marginalia ------------------------------------------------------------ */
+.vs-card.vs-marginalia {
+  padding: 4px 18px 6px;
+  border: 0;
+  border-inline-start: 2px solid var(--st-line-strong);
+  border-radius: 0;
+  background: transparent;
+}
+.vs-marginalia::before { display: none; }
+.vs-marginalia .vs-card-head { margin-bottom: 6px; padding-bottom: 0; }
+.vs-marginalia .vs-card-head::after { display: none; }
+.vs-marginalia .vs-card-ic { width: auto; height: auto; }
+.vs-marginalia .vs-card-ic::before { display: none; }
+.vs-marginalia .vs-card-title { font-size: .9em; color: var(--st-muted); }
+.vs-marginalia .vs-card-desc { margin: 0; font-size: .84em; }
+
+/* --- health checks ------------------------------------------------------------ */
+.vs-check { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px dashed var(--st-line); }
+.vs-card-head + .vs-check { border-top: none; padding-top: 2px; }
+.vs-check-ic { flex: none; display: grid; margin-top: 2px; }
+.vs-check-ic svg { width: 18px; height: 18px; }
+.vs-warn .vs-check-ic { color: var(--st-warn); }
+.vs-info .vs-check-ic { color: var(--st-gold); }
+.vs-ok .vs-check-ic { color: var(--st-ok); }
+.vs-check-body { flex: 1; min-width: 0; }
+.vs-check-title { font-weight: 600; line-height: 1.45; }
+.vs-check summary { margin-top: 6px; color: var(--st-gold); font-size: .84em; cursor: pointer; }
+.vs-fix { flex: none; }
+.vs-list { margin: 8px 0 0; padding-inline-start: 18px; max-height: 220px; overflow: auto; font-size: .84em; }
+.vs-list li { cursor: pointer; padding: 3px 0; color: var(--st-muted); }
+.vs-list li:hover { color: var(--st-gold); }
+
+/* --- controls ---------------------------------------------------------------- */
+.vs-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 12px; background: var(--st-bg); border: 1px solid var(--st-line); }
+.vs-root .vs-seg-btn, .vs-modal .vs-seg-btn, .vs-gal-tabs .vs-seg-btn {
+  display: inline-flex; align-items: center; gap: 5px; height: auto; padding: 5px 11px;
+  border-radius: 9px; background: transparent; box-shadow: none; font-size: .84em; color: var(--st-muted, var(--text-muted)); cursor: pointer;
+}
+.vs-root .vs-seg-btn:hover, .vs-modal .vs-seg-btn:hover { color: var(--st-ink, var(--text-normal)); }
+.vs-root .vs-seg-btn.is-active, .vs-modal .vs-seg-btn.is-active, .vs-gal-tabs .vs-seg-btn.is-active {
+  background: linear-gradient(160deg, var(--dm-accent, var(--interactive-accent)), color-mix(in srgb, var(--dm-accent, var(--interactive-accent)) 70%, #000));
+  color: var(--dm-on-accent, var(--text-on-accent));
+  font-weight: 600;
+}
+.vs-seg-ic svg { width: 14px; height: 14px; }
+
+.vs-presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 10px; margin: 10px 0 14px; }
+.vs-root .vs-preset {
+  display: flex; flex-direction: column; gap: 8px; align-items: stretch; height: auto; padding: 10px;
+  border-radius: 12px; background: var(--st-bg); border: 1px solid var(--st-line); box-shadow: none; font-size: .82em; cursor: pointer;
+  transition: border-color .2s var(--st-ease), transform .2s var(--st-ease);
+}
+.vs-root .vs-preset:hover { border-color: var(--st-line-strong); transform: translateY(-1px); }
+.vs-root .vs-preset.is-active { border-color: var(--st-gold); box-shadow: 0 0 0 1px var(--st-gold); }
+.vs-swatches { display: flex; height: 16px; border-radius: 6px; overflow: hidden; }
+.vs-sw { flex: 1; }
+.vs-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-inline-start: 8px; vertical-align: middle; box-shadow: 0 0 0 1px var(--st-line); }
+.vs-folder-row .setting-item-name { font-weight: 500; }
+.vs-mod-ic { display: inline-grid; margin-inline-end: 8px; vertical-align: -3px; color: var(--st-gold); }
+.vs-mod-ic svg { width: 16px; height: 16px; }
+
+.vs-hprev { display: grid; gap: 4px; margin: 10px 0 12px; padding: 12px; border-radius: 12px; background: var(--st-bg); border: 1px solid var(--st-line); }
+.vs-hp { font-weight: 700; padding: 2px 10px; border-radius: 6px; }
+.vs-hp1 { font-size: 1.5em; } .vs-hp2 { font-size: 1.32em; } .vs-hp3 { font-size: 1.18em; }
+.vs-hp4 { font-size: 1.06em; } .vs-hp5 { font-size: 1em; } .vs-hp6 { font-size: .94em; }
+
+.vs-group-title { font-weight: 700; font-size: .84em; margin: 16px 0 8px; color: var(--st-gold); }
+.vs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.vs-root .vs-chip { height: auto; padding: 5px 12px; border-radius: 999px; font-size: .84em; background: var(--st-bg); border: 1px solid var(--st-line); box-shadow: none; cursor: pointer; }
+.vs-root .vs-chip.is-active { background: var(--st-gold); border-color: var(--st-gold); color: var(--st-on-gold); }
+
+.vs-lrow { display: flex; align-items: center; gap: 8px; padding: 9px 0; border-top: 1px dashed var(--st-line); cursor: pointer; }
+.vs-lname { font-weight: 600; }
+.vs-pill { font-size: .75em; padding: 1px 8px; border-radius: 999px; background: color-mix(in srgb, var(--st-gold) 16%, transparent); color: var(--st-gold); }
+.vs-lrow .vs-icon-btn { margin-inline-start: auto; }
+.vs-ver { color: var(--st-faint); font-size: .8em; }
+.vs-warn-row { box-shadow: inset 3px 0 0 var(--st-warn); }
+
+.modal.vs-modal { width: min(640px, 94vw); }
+.vs-modal .modal-content { max-height: 76vh; overflow: auto; }
+
+/* in Settings the panel sits in Obsidian's own scroller, which already pads */
+.vertical-tab-content .vs-root { padding: 0 0 24px; }
+
+/* the last shortcut closes the card; it needs no rule under it */
+.vs-quick > .vs-q:last-child { border-bottom: 0; }
+
+/* recent Obsidian prints its own slider value; the panel already shows a unit-aware one */
+.vs-root .slider-value { display: none; }
+
+/* names in another script (plugin names, paths) take dir=auto; match-parent keeps
+   them on the panel's reading edge instead of drifting to the opposite side */
+.vs-root .setting-item .setting-item-info { flex: 1 1 0; min-width: 0; }
+.vs-root .setting-item .setting-item-control { flex: 0 1 auto; }
+.vs-root[dir="rtl"] .setting-item .setting-item-info > * { text-align: right; }
+.vs-root[dir="ltr"] .setting-item .setting-item-info > * { text-align: left; }
+
+/* the open note, shown as a small manuscript label under the card title */
+.vs-file {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  margin: 2px 0 6px;
+  padding: 6px 14px 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--st-line);
+  background: var(--st-panel, var(--background-secondary));
+  color: var(--st-ink, var(--text-normal));
+  font-size: .88em;
+  font-weight: 600;
+}
+.vs-file-ic { display: grid; color: var(--st-gold, var(--interactive-accent)); }
+.vs-file-ic svg { width: 15px; height: 15px; }
+.vs-file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* rows whose control is a text block: label above, full-width field below */
+.vs-root .setting-item.vs-stack, .vs-modal .setting-item.vs-stack { flex-wrap: wrap; gap: 10px; }
+.vs-root .setting-item.vs-stack .setting-item-info, .vs-modal .setting-item.vs-stack .setting-item-info { flex: 1 1 100%; }
+.vs-root .setting-item.vs-stack .setting-item-control, .vs-modal .setting-item.vs-stack .setting-item-control { flex: 1 1 100%; }
+.setting-item.vs-stack textarea { width: 100%; min-height: 110px; resize: vertical; font-size: .9em; line-height: 1.7; }

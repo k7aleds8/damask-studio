@@ -1,0 +1,37 @@
+/* ---------- theme variant picker ---------- */
+.vs-variants { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-top: 8px; }
+.vs-variant { border-radius: 14px; overflow: hidden; cursor: pointer; border: 2px solid transparent; background: var(--background-primary); transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.vs-variant:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.25); }
+.vs-variant.is-active { border-color: var(--interactive-accent); }
+.vs-vprev { display: flex; height: 132px; direction: rtl; }
+.vs-vside { width: 26%; padding: 10px 6px; display: flex; flex-direction: column; gap: 6px; }
+.vs-vnav { height: 6px; border-radius: 3px; }
+.vs-vbody { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; gap: 5px; font-size: 10px; line-height: 1.5; }
+.vs-vh1 { font-weight: 900; font-size: 13px; padding-bottom: 2px; }
+.vs-vh2 { font-weight: 700; font-size: 11px; padding-inline-start: 5px; }
+.vs-vtxt { opacity: .9; }
+.vs-vq { padding: 3px 6px; border-radius: 4px; }
+.vs-vchips { display: flex; gap: 4px; margin-top: auto; }
+.vs-vchip { width: 16px; height: 8px; border-radius: 4px; }
+.vs-vlabel { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; font-weight: 700; font-size: .88em; }
+.vs-vcheck { color: var(--interactive-accent); display: inline-flex; }
+.vs-vcheck svg { width: 16px; height: 16px; }
+
+/* ---------- block inserter: suggest + gallery ---------- */
+.vs-sug { display: flex !important; align-items: center; gap: 10px; direction: rtl; }
+.vs-sug-ic { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: color-mix(in srgb, var(--interactive-accent) 16%, transparent); color: var(--interactive-accent); flex: none; }
+.vs-sug-ic svg { width: 15px; height: 15px; }
+.vs-sug-name { font-weight: 600; }
+.vs-sug-group { font-size: .78em; color: var(--text-faint); }
+.modal.vs-gallery-modal { width: min(1080px, 96vw); }
+.vs-gallery-modal .modal-content { max-height: 82vh; }
+.vs-gal-head h2 { margin: 0 0 2px; }
+.vs-gal-tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 12px; }
+.vs-gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.vs-gal-card { border-radius: 14px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); cursor: pointer; overflow: hidden; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.vs-gal-card:hover { transform: translateY(-2px); border-color: var(--interactive-accent); box-shadow: 0 10px 26px rgba(0, 0, 0, .3); }
+.vs-gal-title { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-weight: 700; font-size: .9em; background: var(--background-secondary); border-bottom: 1px solid var(--background-modifier-border); }
+.vs-gal-title svg { width: 15px; height: 15px; color: var(--interactive-accent); }
+.vs-gal-preview { padding: 18px 16px 10px; zoom: .78; pointer-events: none; max-height: 300px; overflow: hidden; }
+.vs-gal-preview .callout { margin-top: 1.9em; }
+

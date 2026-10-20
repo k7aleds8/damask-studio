@@ -1,0 +1,29 @@
+name: Bug report
+description: Something in Damascene Studio doesn't work right
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead. Screenshots help a lot.
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part?
+      options: [Home dashboard, Embeds, Block gallery, Folder colours, Focus timer, Habits, TickTick, Control panel, Something else]
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: Obsidian 1.x, Damascene Studio 2.x, theme in use, OS
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Interface language
+      options: [English, العربية, Français, Español, Türkçe]

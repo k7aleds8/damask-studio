@@ -5,7 +5,7 @@ import { TickTickClient } from './integrations/ticktick/client';
 import { TickTickMirror } from './integrations/ticktick/mirror';
 import { TrashModal } from './integrations/ticktick/modals';
 import { QuickAddModal, TickTickUI } from './integrations/ticktick/ui';
-import { applyVariant, folderCss, headingCss } from './modules/appearance/styles';
+import { applyVariant, clearVariant, folderCss, headingCss } from './modules/appearance/styles';
 import { EmbedManager } from './modules/embeds/manager';
 import { HabitsManagerModal } from './modules/habits/manager';
 import { GalleryModal, inserterCommands } from './modules/inserter/gallery';
@@ -140,7 +140,7 @@ export class AppearanceFeature extends Feature {
     if (this.sheet) document.adoptedStyleSheets = document.adoptedStyleSheets.filter((x) => x !== this.sheet);
     this.sheet = null;
     document.body.removeClass('vs-folders-on', 'vs-headings-on');
-    // leave Style Settings' own palette classes in place
+    clearVariant(this.plugin.app);
   }
 }
 

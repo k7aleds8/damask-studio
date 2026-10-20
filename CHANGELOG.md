@@ -1,6 +1,12 @@
 # Changelog
 
-## 2.0.0 — unreleased
+## 2.0.1
+
+- Switching the plugin off, or only its palette module, now takes the palette
+  classes back off the page. While Style Settings is running they stay, since
+  they are its palette choice too.
+
+## 2.0.0
 
 First public release, renamed from Vault Studio.
 

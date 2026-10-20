@@ -124,11 +124,25 @@ function syncStyleSettings(app: App, S: StudioSettings): void {
   }
 }
 
-export function applyVariant(app: App, S: StudioSettings): void {
-  if (!S.modules.variants) return;
+interface ClassTarget { addClass(...classes: string[]): void; removeClass(...classes: string[]): void }
+
+const PALETTE_CLASSES = VARIANTS.map((v) => `dm-${v.mode}-${v.id}`);
+
+export function applyVariant(app: App, S: StudioSettings, body: ClassTarget = document.body): void {
+  if (!S.modules.variants) { clearVariant(app, body); return; }
   syncStyleSettings(app, S);
-  for (const v of VARIANTS) document.body.removeClass(`dm-${v.mode}-${v.id}`);
-  document.body.addClass(`dm-dark-${S.theme.dark}`, `dm-light-${S.theme.light}`);
+  body.removeClass(...PALETTE_CLASSES);
+  body.addClass(`dm-dark-${S.theme.dark}`, `dm-light-${S.theme.light}`);
+}
+
+/**
+ * Take the palette classes back off the page. While Style Settings is running
+ * they are its classes too (we keep its choice in sync), so they stay put and
+ * the user's palette survives this plugin being switched off.
+ */
+export function clearVariant(app: App, body: ClassTarget = document.body): void {
+  if (communityPlugin(app, 'obsidian-style-settings')) return;
+  body.removeClass(...PALETTE_CLASSES);
 }
 
 /* ------------------------------------------------------------ note styles */

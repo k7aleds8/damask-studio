@@ -292,7 +292,7 @@
   font-size: .86em;
   cursor: pointer;
 }
-.vs-root .vs-link:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--st-line-strong); }
+.vs-root .vs-link:hover { text-decoration: underline var(--st-line-strong); text-underline-offset: 5px; }
 
 /* --- ledger of numbers ------------------------------------------------------ */
 .vs-ledger {
@@ -352,7 +352,7 @@
 .vs-status.is-warn .vs-card-ic::before { background: color-mix(in srgb, var(--st-warn) 18%, transparent); }
 
 /* --- index of shortcuts -------------------------------------------------- */
-.vs-quick { margin-top: -4px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); column-gap: 22px; }
+.vs-quick { margin-top: -4px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: normal 22px; }
 .vs-root .vs-q {
   display: flex;
   align-items: center;

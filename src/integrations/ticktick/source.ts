@@ -1,4 +1,4 @@
-import { moment } from 'obsidian';
+import { moment } from '../../core/time';
 import type { FocusItem, FocusSource, TaskItem, TaskSource } from '../../stats/types';
 import type { TickTickClient } from './client';
 import type { TTFocus, TTTask } from './types';

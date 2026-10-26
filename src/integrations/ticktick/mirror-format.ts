@@ -1,4 +1,4 @@
-import { moment } from 'obsidian';
+import { moment } from '../../core/time';
 import { parseTaskLine, squash } from '../../core/task-line';
 import { en } from '../../i18n/locales/en';
 import { ar } from '../../i18n/locales/ar';

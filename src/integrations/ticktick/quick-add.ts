@@ -1,4 +1,4 @@
-import { moment } from 'obsidian';
+import { moment } from '../../core/time';
 import type { Moment } from 'moment';
 import { language, m, t, type LanguageCode } from '../../i18n';
 

@@ -1,4 +1,5 @@
-import { moment, normalizePath, Notice, TFile, type TAbstractFile } from 'obsidian';
+import { normalizePath, Notice, TFile, type TAbstractFile } from 'obsidian';
+import { moment } from '../../core/time';
 import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';
 import { squash } from '../../core/task-line';

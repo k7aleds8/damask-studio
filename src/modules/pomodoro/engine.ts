@@ -1,5 +1,6 @@
 import { handler } from '../../core/dom';
-import { moment, Notice } from 'obsidian';
+import { Notice } from 'obsidian';
+import { moment } from '../../core/time';
 import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';
 import { m, t } from '../../i18n';

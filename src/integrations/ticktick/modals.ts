@@ -1,4 +1,5 @@
-import { Modal, moment, Notice, setIcon, type App } from 'obsidian';
+import { Modal, Notice, setIcon, type App } from 'obsidian';
+import { moment } from '../../core/time';
 import type DamaskStudio from '../../main';
 import { segmented, handler } from '../../core/dom';
 import { dir, language, m, t } from '../../i18n';
@@ -350,6 +351,7 @@ export class TrashModal extends Modal {
     const mirror = this.plugin.ticktickMirror!;
     c.empty();
     c.addClass('tt-root', 'tm-trash');
+    this.modalEl.addClass('tm-wide');
     c.setAttr('dir', dir());
     c.createEl('h3', { text: t('ticktick.trash.title') });
     c.createEl('p', { cls: 'qh-muted', text: t('ticktick.trash.intro') });

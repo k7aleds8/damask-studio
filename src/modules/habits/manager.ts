@@ -19,6 +19,7 @@ export class HabitsManagerModal extends Modal {
     const c = this.contentEl;
     c.empty();
     c.addClass('tt-root', 'tm-habits');
+    this.modalEl.addClass('tm-wide');
     c.setAttr('dir', dir());
     c.createEl('h3', { text: t('habits.manager.title') });
     c.createEl('p', { cls: 'qh-muted', text: this.synced ? t('habits.manager.synced') : t('habits.manager.local') });

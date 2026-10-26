@@ -1,5 +1,6 @@
 import { handler } from '../../core/dom';
-import { Component, ItemView, Modal, moment, Notice, Platform, setIcon, type App, type WorkspaceLeaf } from 'obsidian';
+import { Component, ItemView, Modal, Notice, Platform, setIcon, type App, type WorkspaceLeaf } from 'obsidian';
+import { moment } from '../../core/time';
 import type { Moment } from 'moment';
 import type DamaskStudio from '../../main';
 import { dir, formatNumber, formatPercent, m, t } from '../../i18n';
@@ -212,7 +213,7 @@ export class TickTickUI {
   private column(parent: HTMLElement, title: string, icon: string, list: TTTask[], cls: string, onDrop: ((x: TTTask) => void) | null, hint?: string, total?: number): HTMLElement {
     const c = parent.createDiv('tt-col ' + cls);
     const h = c.createDiv('tt-col-head');
-    setIcon(h.createSpan(), icon);
+    setIcon(h.createSpan('tt-col-ico'), icon);
     h.createSpan({ text: title });
     h.createSpan({ cls: 'tt-col-n', text: formatNumber(total ?? list.length) });
     const box = c.createDiv('tt-col-list');

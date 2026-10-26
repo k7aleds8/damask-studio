@@ -1,4 +1,5 @@
-import { moment, normalizePath, TFile, TFolder, type App } from 'obsidian';
+import { normalizePath, TFile, TFolder, type App } from 'obsidian';
+import { moment } from './time';
 import type { Moment } from 'moment';
 import type { StudioSettings } from '../settings/types';
 import { dailyNoteSettings, ignoredFolders } from './internals';

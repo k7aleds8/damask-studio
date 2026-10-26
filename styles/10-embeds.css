@@ -13,7 +13,7 @@
 .vs-embed:not(.vs-has-w) { width: fit-content !important; }
 /* an SVG with only a viewBox has no natural width, so fit-content would
    shrink it to nothing; let it fill the line instead */
-.vs-embed:not(.vs-has-w):has(> img[src*=".svg"]) { width: 100% !important; }
+.vs-embed.vs-svg:not(.vs-has-w) { width: 100% !important; }
 .vs-embed:not(.vs-has-w) > img[src*=".svg"] { width: 100%; }
 .vs-embed.vs-no-max { --vs-max: none !important; } /* while dragging, beats the inline value */
 .vs-embed img,

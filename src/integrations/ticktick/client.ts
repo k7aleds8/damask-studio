@@ -1,4 +1,5 @@
-import { moment, Notice, requestUrl, TFile } from 'obsidian';
+import { Notice, requestUrl, TFile } from 'obsidian';
+import { moment } from '../../core/time';
 import type { Moment } from 'moment';
 import type DamaskStudio from '../../main';
 import { readLocal, writeLocal } from '../../core/storage';

@@ -77,7 +77,7 @@
 .tt-col { border-radius: 14px; padding: 8px; background: var(--qh-sunk); border: 1px solid transparent; min-height: 120px; transition: border-color .15s, background .15s; }
 .tt-col-head { display: flex; align-items: center; gap: 8px; padding: 6px 6px 10px; font-weight: 700; font-size: .9em; }
 .tt-col-head .svg-icon, .tt-col-head > span:first-child:empty { display: none; }
-.tt-col-head > span:first-child:has(svg) { display: none; }
+.tt-col-ico { display: none; }
 .tt-col-n { margin-inline-start: auto; min-width: 22px; text-align: center; font-size: .78em; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--qh-track); color: var(--dm-muted); font-variant-numeric: tabular-nums; }
 .tt-col.is-overdue .tt-col-n { background: var(--qh-c3); color: #edebe0; }
 .tt-col.is-today .tt-col-n { background: var(--qh-primary); color: var(--qh-on-primary); }

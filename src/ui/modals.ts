@@ -11,6 +11,7 @@ export class ConfirmModal extends Modal {
   onOpen(): void {
     const c = this.contentEl;
     c.addClass('tt-root', 'tm-confirm');
+    this.modalEl.addClass('tm-wide');
     c.setAttr('dir', dir());
     c.createEl('h3', { text: this.o.title });
     for (const p of this.o.text.split('\n')) c.createEl('p', { cls: 'qh-muted', text: p });

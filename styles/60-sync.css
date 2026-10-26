@@ -7,7 +7,7 @@
 .tm-trash-row, .tm-hrow { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
 .tm-trash-row + .tm-trash-row, .tm-hrow + .tm-hrow { border-top: 1px solid var(--qh-line); }
 .tm-trash-t, .tm-hname { flex: 1; min-width: 0; } .tm-trash-name, .tm-hname > div:first-child { font-weight: 600; }
-.modal:has(.tm-trash), .modal:has(.tm-habits), .modal:has(.tm-confirm) { width: min(640px, 94vw); }
+.modal.tm-wide { width: min(640px, 94vw); }
 /* the list notes themselves */
 .tt-mirror .task-list-item { padding-block: 2px; }
 .tt-mirror h2 { font-size: 1.05em; }

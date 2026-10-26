@@ -1,4 +1,5 @@
-import { getLanguage, moment } from 'obsidian';
+import { getLanguage } from 'obsidian';
+import { moment } from '../core/time';
 import type { Moment, MomentInput } from 'moment';
 import { en } from './locales/en';
 import { ar } from './locales/ar';

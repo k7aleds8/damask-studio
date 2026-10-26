@@ -8,7 +8,7 @@ import { TextPromptModal } from '../../ui/modals';
 import { EmbedModal } from './modal';
 
 type Kind = 'excalidraw' | 'image';
-const CLASSES = ['vs-embed', 'vs-has-w', 'vs-float-left', 'vs-float-right', 'vs-frame-card', 'vs-frame-glass', 'vs-frame-outline', 'vs-frame-polaroid', 'vs-shadow', 'vs-bg-paper', 'vs-bg-theme', 'vs-inv-dark', 'vs-inv-always'];
+const CLASSES = ['vs-embed', 'vs-has-w', 'vs-svg', 'vs-float-left', 'vs-float-right', 'vs-frame-card', 'vs-frame-glass', 'vs-frame-outline', 'vs-frame-polaroid', 'vs-shadow', 'vs-bg-paper', 'vs-bg-theme', 'vs-inv-dark', 'vs-inv-always'];
 
 /**
  * Layout for images and Excalidraw drawings embedded in notes. Layouts are
@@ -122,6 +122,8 @@ export class EmbedManager {
   apply(e: HTMLElement, L: EmbedLayout = this.layoutFor(e.dataset.vsKind ?? '', e.dataset.vsNote ?? '', e.dataset.vsTarget ?? '')): void {
     e.classList.add('vs-embed');
     e.classList.toggle('vs-has-w', !!L.width);
+    // SVGs have no intrinsic width worth keeping, so without a set width they fill the line
+    e.classList.toggle('vs-svg', /\.svg$/i.test(e.dataset.vsTarget ?? '') || !!e.querySelector(':scope > img[src*=".svg"]'));
     e.style.setProperty('--vs-w', L.width ? `${L.width}%` : 'fit-content');
     e.style.setProperty('--vs-max', L.maxWidth ? `${L.maxWidth}px` : 'none');
     e.style.setProperty('--vs-radius', `${L.radius || 0}px`);

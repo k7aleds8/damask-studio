@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.4
+
+- The stylesheet no longer uses `!important`. Buttons are styled through the variables
+  Obsidian already reads for them, so themes and snippets can restyle the dashboard,
+  task center and control panel without a fight. Nothing looks different.
+- The focus clock's hour petals keep their brightness when you hover them, without
+  overriding inline styles.
+
 ## 2.0.3
 
 - Option previews work when the control panel sits in a popout window. Before, the

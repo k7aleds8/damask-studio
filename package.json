@@ -1,7 +1,7 @@
 {
   "name": "damask-studio",
   "private": true,
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Damask Studio, the companion plugin for the Damask Obsidian theme",
   "license": "MIT",
   "author": "k7aleds8",

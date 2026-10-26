@@ -11,7 +11,7 @@ a home dashboard, a block gallery, embed layouts, folder colours, a focus timer 
 
 <br>
 
-[![Version](https://img.shields.io/badge/version-2.0.2-b9a779?style=flat-square&labelColor=002623)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.3-b9a779?style=flat-square&labelColor=002623)](CHANGELOG.md)
 [![Obsidian](https://img.shields.io/badge/Obsidian-1.8.7%2B-7ea69c?style=flat-square&labelColor=002623&logo=obsidian&logoColor=edebe0)](https://obsidian.md)
 [![Languages](https://img.shields.io/badge/EN%20·%20AR%20·%20FR%20·%20ES%20·%20TR-a67b7c?style=flat-square&labelColor=002623&label=languages)](#languages)
 [![License](https://img.shields.io/badge/license-MIT-edebe0?style=flat-square&labelColor=002623)](LICENSE)

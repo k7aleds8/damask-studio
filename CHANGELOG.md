@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.3
+
+- Option previews work when the control panel sits in a popout window. Before, the
+  stage stayed blank and a pinned preview ignored Escape and outside clicks there.
+- The first loop of a preview starts fully visible instead of fading in from nothing.
+- Release files now carry GitHub build attestations, so you can check they were built
+  from this repository.
+- Internal: date handling is typed end to end, and three `:has()` selectors became
+  classes set from code.
+
 ## 2.0.2
 
 - New name: **Damask Studio** (plugin id `damask-studio`), following the theme, now called

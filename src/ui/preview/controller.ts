@@ -28,6 +28,8 @@ interface Open {
   player: Player | null;
   from: string;
   to: string;
+  /** removes the window listeners added for this preview */
+  unbind: () => void;
 }
 
 const HOVER_DELAY = 450;
@@ -39,20 +41,42 @@ export class PreviewController {
   private closeTimer = 0;
 
   constructor(private plugin: DamaskStudio) {
-    plugin.registerDomEvent(document, 'keydown', (e) => { if (e.key === 'Escape' && this.open) this.close(); });
+    plugin.register(() => this.close());
+    // the panel may be closed or moved to another window while a preview is up
+    plugin.registerEvent(plugin.app.workspace.on('layout-change', () => this.sweep()));
+  }
+
+  /**
+   * Listeners on the window the row lives in, which is a popout's when the
+   * panel was dragged into one. They only exist while a preview is open.
+   */
+  private bind(doc: Document): () => void {
+    const win = doc.win;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') this.close(); };
     // a pinned preview closes on a click anywhere else, like any popover
-    plugin.registerDomEvent(document, 'pointerdown', (e) => {
+    const onDown = (e: PointerEvent) => {
       const o = this.open;
       const at = e.target as Node;
       if (o && !o.inline && !o.box.contains(at) && !o.row.contains(at)) this.close();
-    }, true);
-    plugin.registerDomEvent(document, 'scroll', () => {
+    };
+    const onScroll = () => {
       if (!this.open || this.open.inline) return;
       if (this.open.pinned) this.place(); else this.close();
-    }, true);
-    plugin.registerDomEvent(document, 'visibilitychange', () => (document.hidden ? this.open?.player?.pause() : this.open?.player?.play()));
-    plugin.registerDomEvent(window, 'resize', () => this.place());
-    plugin.register(() => this.close());
+    };
+    const onVisible = () => (doc.hidden ? this.open?.player?.pause() : this.open?.player?.play());
+    const onResize = () => this.place();
+    doc.addEventListener('keydown', onKey);
+    doc.addEventListener('pointerdown', onDown, true);
+    doc.addEventListener('scroll', onScroll, true);
+    doc.addEventListener('visibilitychange', onVisible);
+    win.addEventListener('resize', onResize);
+    return () => {
+      doc.removeEventListener('keydown', onKey);
+      doc.removeEventListener('pointerdown', onDown, true);
+      doc.removeEventListener('scroll', onScroll, true);
+      doc.removeEventListener('visibilitychange', onVisible);
+      win.removeEventListener('resize', onResize);
+    };
   }
 
   private get touch(): boolean { return Platform.isMobile || !window.matchMedia('(hover: hover)').matches; }
@@ -117,6 +141,7 @@ export class PreviewController {
     const o = this.open;
     if (!o) return;
     o.player?.destroy();
+    o.unbind();
     o.box.remove();
     o.row.removeAttribute('aria-describedby');
     o.row.removeClass('is-previewing');
@@ -171,7 +196,7 @@ export class PreviewController {
       box.addEventListener('mouseenter', () => window.clearTimeout(this.closeTimer));
       box.addEventListener('mouseleave', () => { if (!this.open?.pinned) this.closeTimer = window.setTimeout(() => this.close(), LEAVE_GRACE); });
     }
-    this.open = { spec, row, box, pinned, inline, hint, player: null, from: '', to: '' };
+    this.open = { spec, row, box, pinned, inline, hint, player: null, from: '', to: '', unbind: this.bind(row.doc) };
     this.refresh();
     this.place();
   }

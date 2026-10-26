@@ -105,6 +105,8 @@ export class Player {
   private t0 = 0;
   private pausedAt = 0;
   private phase: 'from' | 'to' | null = null;
+  /** the first pass starts fully visible; only later loops fade back in */
+  private looped = false;
   private level = -1;
   private io: IntersectionObserver;
   /** called every frame with the loop position, for the progress bar and state pills */
@@ -115,15 +117,19 @@ export class Player {
     this.el = this.s.root;
     this.path = cursorPath(!!this.s.handle.demo);
     this.render(0);
-    // stop drawing while scrolled out of view; the popover can sit off-screen in a long panel
-    this.io = new IntersectionObserver(([e]) => (e.isIntersecting ? this.play() : this.pause()));
+    // stop drawing while scrolled out of view; the popover can sit off-screen in a long panel.
+    // The observer and the clock come from the stage's own window, which is a popout's when
+    // the panel lives in one: mixing windows gives a negative clock and an invisible stage.
+    const Observer = (this.el.win as Window & { IntersectionObserver: typeof IntersectionObserver }).IntersectionObserver;
+    this.io = new Observer(([e]) => (e.isIntersecting ? this.play() : this.pause()));
     this.io.observe(this.el);
+    this.play();
   }
 
   play(): void {
     if (this.raf) return;
     const win = this.el.win;
-    this.t0 = performance.now() - this.pausedAt;
+    this.t0 = win.performance.now() - this.pausedAt;
     const step = (now: number) => {
       this.render((now - this.t0) % LOOP);
       this.raf = win.requestAnimationFrame(step);
@@ -135,7 +141,7 @@ export class Player {
     if (!this.raf) return;
     this.el.win.cancelAnimationFrame(this.raf);
     this.raf = 0;
-    this.pausedAt = (performance.now() - this.t0) % LOOP;
+    this.pausedAt = (this.el.win.performance.now() - this.t0) % LOOP;
   }
 
   /** Jump to a moment and stay there; transitions are skipped so the frame is exact. */
@@ -162,7 +168,7 @@ export class Player {
     if (phase !== this.phase) {
       // the loop restarts while the stage is faded out: snap back instead of animating
       const restart = this.phase === 'to' && phase === 'from';
-      if (restart) root.addClass('is-snap');
+      if (restart) { root.addClass('is-snap'); this.looped = true; }
       const v = phase === 'from' ? this.from : this.to;
       handle.show(v);
       ctl.set(v);
@@ -192,7 +198,7 @@ export class Player {
     });
     cursor.toggleClass('is-press', pressedAt(ms, !!demo));
 
-    const fade = ms >= FADE_FROM ? 1 - (ms - FADE_FROM) / (LOOP - FADE_FROM) : Math.min(1, ms / 220);
+    const fade = ms >= FADE_FROM ? 1 - (ms - FADE_FROM) / (LOOP - FADE_FROM) : this.looped ? Math.min(1, ms / 220) : 1;
     root.setCssProps({ '--fade': fade.toFixed(2) });
     this.onTick?.(ms, phase);
   }

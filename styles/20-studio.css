@@ -18,7 +18,7 @@
 .vs-vcheck svg { width: 16px; height: 16px; }
 
 /* ---------- block inserter: suggest + gallery ---------- */
-.vs-sug { display: flex !important; align-items: center; gap: 10px; direction: rtl; }
+.vs-sug { display: flex; align-items: center; gap: 10px; direction: rtl; }
 .vs-sug-ic { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: color-mix(in srgb, var(--interactive-accent) 16%, transparent); color: var(--interactive-accent); flex: none; }
 .vs-sug-ic svg { width: 15px; height: 15px; }
 .vs-sug-name { font-weight: 600; }

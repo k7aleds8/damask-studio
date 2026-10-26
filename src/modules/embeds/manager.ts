@@ -313,7 +313,8 @@ export class EmbedManager {
       last = Math.round((nw / pw) * 100);
       e.classList.add('vs-has-w');
       e.style.setProperty('--vs-w', `${last}%`);
-      e.addClass('vs-no-max');
+      // dragging drops the saved cap; save() below stores maxWidth 0 to match
+      e.setCssProps({ '--vs-max': 'none' });
       this.widthLabel.textContent = `${last}%`;
       this.position();
       this.sizeTag.textContent = `${last}%`;
@@ -322,7 +323,6 @@ export class EmbedManager {
       document.removeEventListener('mousemove', move);
       document.removeEventListener('mouseup', handler(up));
       document.body.removeClass('vs-dragging');
-      e.removeClass('vs-no-max');
       this.dragging = false;
       await this.save(e, { width: Math.max(10, Math.min(100, last)), maxWidth: 0 });
     };

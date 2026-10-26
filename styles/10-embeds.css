@@ -1,27 +1,26 @@
 /* ---------- embed layout engine ---------- */
 .vs-embed {
-  display: block !important;
+  display: block;
   position: relative;
   box-sizing: border-box;
-  width: var(--vs-w, fit-content) !important;
-  max-width: min(100%, var(--vs-max, none)) !important;
+  width: var(--vs-w, fit-content);
+  max-width: min(100%, var(--vs-max, none));
   padding: var(--vs-pad, 0);
   border-radius: var(--vs-radius, 0);
-  margin-block: 14px !important;
+  margin-block: 14px;
   transition: width .18s ease, max-width .18s ease, box-shadow .2s ease, background .2s ease;
 }
-.vs-embed:not(.vs-has-w) { width: fit-content !important; }
+.vs-embed:not(.vs-has-w) { width: fit-content; }
 /* an SVG with only a viewBox has no natural width, so fit-content would
    shrink it to nothing; let it fill the line instead */
-.vs-embed.vs-svg:not(.vs-has-w) { width: 100% !important; }
+.vs-embed.vs-svg:not(.vs-has-w) { width: 100%; }
 .vs-embed:not(.vs-has-w) > img[src*=".svg"] { width: 100%; }
-.vs-embed.vs-no-max { --vs-max: none !important; } /* while dragging, beats the inline value */
 .vs-embed img,
 .vs-embed svg:not(svg svg),
 .vs-embed canvas {
   display: block;
-  max-width: 100% !important;
-  height: auto !important;
+  max-width: 100%;
+  height: auto;
   margin-inline: auto;
   border-radius: calc(var(--vs-radius, 0) * .8);
 }
@@ -31,17 +30,17 @@
 .vs-embed.vs-has-w .excalidraw-embedded-img,
 .vs-embed.vs-has-w .excalidraw-svg,
 .vs-embed.vs-has-w .image-embed {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 /* remove the default embed chrome around excalidraw drawings */
 .vs-embed.markdown-embed,
-.vs-embed .markdown-embed { border: none !important; padding-inline: 0; background: transparent; }
+.vs-embed .markdown-embed { border: none; padding-inline: 0; background: transparent; }
 
 /* floats (text wrap) */
-.vs-embed.vs-float-right { float: right; margin: 6px 0 12px 22px !important; }
-.vs-embed.vs-float-left  { float: left;  margin: 6px 22px 12px 0 !important; }
+.vs-embed.vs-float-right { float: right; margin: 6px 0 12px 22px; }
+.vs-embed.vs-float-left  { float: left;  margin: 6px 22px 12px 0; }
 .markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3, .markdown-rendered hr { clear: both; }
 
 /* frames */
@@ -62,7 +61,7 @@
 }
 .vs-embed.vs-frame-polaroid {
   background: #fbfbf8;
-  padding: 12px 12px 14px !important;
+  padding: 12px 12px 14px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, .35);
 }
 .vs-embed.vs-frame-polaroid .vs-caption { color: #333; font-style: normal; }
@@ -104,12 +103,12 @@
 .vs-bar.is-on { opacity: 1; pointer-events: auto; transform: none; }
 .vs-icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 30px; height: 30px; padding: 0 !important;
-  background: transparent !important; box-shadow: none !important;
+  width: 30px; height: 30px; padding: 0;
+  --interactive-normal: transparent; --interactive-hover: transparent; --input-shadow: none; --input-shadow-hover: none;
   border-radius: 8px; color: var(--text-muted); cursor: pointer;
 }
-.vs-icon-btn:hover { background: var(--background-modifier-hover) !important; color: var(--text-normal); }
-.vs-icon-btn.is-active { background: color-mix(in srgb, var(--interactive-accent) 22%, transparent) !important; color: var(--interactive-accent); }
+.vs-icon-btn:hover { --interactive-hover: var(--background-modifier-hover); color: var(--text-normal); }
+.vs-icon-btn.is-active { --interactive-normal: color-mix(in srgb, var(--interactive-accent) 22%, transparent); --interactive-hover: color-mix(in srgb, var(--interactive-accent) 22%, transparent); color: var(--interactive-accent); }
 .vs-icon-btn svg { width: 16px; height: 16px; }
 .vs-sep { width: 1px; height: 20px; background: var(--background-modifier-border); margin: 0 4px; }
 .vs-wlabel {
@@ -143,7 +142,7 @@
   background: var(--interactive-accent); color: var(--text-on-accent); opacity: 0; transition: opacity .15s;
 }
 body.vs-dragging .vs-size-tag { opacity: 1; }
-body.vs-dragging, body.vs-dragging * { cursor: ew-resize !important; user-select: none !important; }
+body.vs-dragging, body.vs-dragging * { cursor: ew-resize; user-select: none; }
 
 /* ---------- note style classes provided by the plugin ---------- */
 .vs-wide { --file-line-width: 100%; --line-width: 100%; }

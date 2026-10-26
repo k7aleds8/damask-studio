@@ -292,7 +292,7 @@
   font-size: .86em;
   cursor: pointer;
 }
-.vs-root .vs-link:hover { text-decoration: underline var(--st-line-strong); text-underline-offset: 5px; }
+.vs-root .vs-link:hover { text-decoration: underline; text-underline-offset: 5px; }
 
 /* --- ledger of numbers ------------------------------------------------------ */
 .vs-ledger {

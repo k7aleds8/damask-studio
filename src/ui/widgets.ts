@@ -237,7 +237,8 @@ export class Widgets {
       const p = svg('path', {
         d: `M${P(r0, a)} L${P(r1, a)} A${r1},${r1} 0 0 1 ${P(r1, a2)} L${P(r0, a2)} A${r0},${r0} 0 0 0 ${P(r0, a)} Z`,
         class: 'tt-rseg',
-        style: `fill:var(--dm-accent);opacity:${v ? 0.25 + (0.75 * v) / mx : 0.08}`,
+        // opacity goes through a variable so the hover rule can still lift it
+        style: `--seg-o:${v ? 0.25 + (0.75 * v) / mx : 0.08}`,
       }, s);
       this.tipOn(p, `${String(h).padStart(2, '0')}:00 — ${formatNumber(v)} ${unit}`);
     });
